@@ -41,8 +41,8 @@
 // ixedit object.
 var ixedit = {
 	appName: 'IxEdit',
-	version: '1.0pb6',
-	term: '2009',
+	version: '1.01Alpha',
+	term: '2012',
 	hasLocalDb: false,
 	detectBrowserLang: function(){
 		try {
@@ -296,7 +296,7 @@ ixedit.lang = {
 		'alertDeletingItem3':' items?',
 		'alertloadDemo':'Some interactions are embedded on this page. Do you want to load them?',
 		'version':'Version',
-		'copyright':'Copyright &#169; ' + ixedit.term + ' Sociomedia Inc.<br />All rights reserved.',
+		'copyright':'Created by Sociomedia Inc. <br />Develope by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
 		'instructionDeploy':'<h2>To embed the generated JavaScript code to your HTML</h2><ol><li>Copy the following JavaScript code.</li><li>Open your HTML file with a text editor.</li><li>Paste the code to very bottom of inside the &lt;head&gt; element.</li><li>Delete the line which is loading IxEdit script file like &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt;.</li><li>Delete the line which is loading IxEdit CSS file like &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; also.</li><li>Save the HTML file and reload it with a browser.</li></ol>',
 		'instructionImport':'<h2>To import data by copy-pasting from another IxEdit-editing page</h2><ol><li>Copy data from the Exporting dialog of the page you want to import from.</li><li>Paste the data into the following text area.</li><li>Hit the Import button.</li></ol>',
 		'instructionImportFromDB':'<h2>To import data from existing interactions which have made on this browser</h2><ol><li>Choose one from following table.</li><li>Hit the Import button.</li></ol>',
@@ -502,7 +502,7 @@ ixedit.lang = {
 		'alertDeletingItem3':'項目を本当に削除しますか？',
 		'alertloadDemo':'このページにはインタラクションが埋め込まれています。読み込みますか？',
 		'version':'バージョン',
-		'copyright':'Copyright &#169; ' + ixedit.term + ' Sociomedia Inc.<br />All rights reserved.',
+		'copyright':'Created by Sociomedia Inc. <br />Develope by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
 		'instructionDeploy':'<h2>生成された JavaScript コードを HTML に埋め込むには</h2><ol><li>下の JavaScript コードをコピーします。</li><li>テキストエディタで HTML ファイルを開きます。</li><li>&lt;head&gt; 要素内の一番下にコードをペーストします。</li><li>IxEdit スクリプトファイルを読み込むための &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt; のような行を削除します。</li><li>IxEdit の CSS を読み込むための &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; のような行も削除します。</li><li>HTML ファイルを保存し、ブラウザでリロードします。</li></ol>',
 		'instructionImport':'<h2>他の IxEdit で編集中のページからデータをインポートするには</h2><ol><li>インポート元のページのエクスポートダイアログでデータをコピーします。</li><li>下のテキストエリアにデータをペーストします。</li><li>インポートボタンを押します。</li></ol>',
 		'instructionImportFromDB':'<h2>このブラウザで作成した既存のインタラクションからデータをインポートするには</h2><ol><li>下のテーブルからひとつ選びます。</li><li>インポートボタンを押します。</li></ol>',
@@ -5754,6 +5754,8 @@ replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 jQuery(function(){
 	if(!ixedit.deployed){
 		ixedit.initialize();
+	ixedit.makeDialogBase()
+	ixedit.generateDialogMain();
 	}
 });
 
@@ -5761,6 +5763,5 @@ jQuery(function(){
 }; // End of 
 
 if(ixedit.boot()) {
-	ixedit.makeDialogBase()
-	ixedit.generateDialogMain();
+
 }
