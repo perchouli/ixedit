@@ -1,41 +1,17 @@
 /* ==================== IXEDIT ==================== */
 
 /*!
- * IxEdit v1.0pb6
- * http://ixedit.com/
+ * IxEdit v1.01Alpha
+ * https://github.com/perchouli/ixedit
  *
- * Copyright (c) 2009 Sociomedia Inc.
- * http://www.sociomedia.co.jp/
+ * Created by Sociomedia Inc.
+ * Now maintained by Perchouli <jp.chenyang@gmail.com>
  * Licensed under GPL.
- * http://ixedit.com/license/
  * 
  * IxEdit depends on and has links to jQuery and jQuery UI JavaScript Libraries.
  * 
- * Date: 2009-12-24
+ * Date: 2012-05-24
  */
-
-/*!
- * jQuery JavaScript Library v1.3.2
- * http://jquery.com/
- *
- * Copyright (c) 2009 John Resig
- * Dual licensed under the MIT and GPL licenses.
- * http://docs.jquery.com/License
- *
- * Date: 2009-02-19 17:34:21 -0500 (Thu, 19 Feb 2009)
- * Revision: 6246
- */
-
-/*!
- * jQuery UI 1.7.2
- *
- * Copyright (c) 2009 http://jqueryui.com/about
- * Dual licensed under the MIT and GPL licenses.
- *
- * http://docs.jquery.com/UI
- */
-
-
 
 
 // ixedit object.
@@ -54,18 +30,25 @@ var ixedit = {
 	// Define alert messages for booting.
 	babyLang: {
 		en : {
-			'needLocalStorage':'IxEdit needs client-side database storage or Gears (http://gears.google.com/) installed.',
+			'needLocalStorage':'IxEdit needs client-side database storage',
 			'needCurrentJQueryUI':'IxEdit needs jQuery UI 1.7 or higher.',
 			'needJQueryUI':'IxEdit needs jQuery UI.',
 			'needCurrentJQuery':'IxEdit jQuery 1.3 or higher.',
 			'needJQuery':'IxEdit needs jQuery.'
 		},
 		ja : {
-			'needLocalStorage':'IxEdit を利用するには、クライアントサイド・データベース・ストレージ、または Gears (http://gears.google.com/) が必要です。',
+			'needLocalStorage':'IxEdit を利用するには、クライアントサイド・データベース・ストレージ。',
 			'needCurrentJQueryUI':'IxEdit を利用するには jQuery UI 1.7 以上が必要です。',
 			'needJQueryUI':'IxEdit を利用するには JQuery UI が必要です。',
 			'needCurrentJQuery':'IxEdit を利用するには、jQuery 1.3 以上が必要です。',
 			'needJQuery':'IxEdit を利用するには、jQuery が必要です。'
+		},
+		zh : {
+			'needLocalStorage':'IxEdit 需要本地存储的支持，请使用支持localStorage的浏览器',
+			'needCurrentJQueryUI':'IxEdit 需要使用jQuery UI 1.7以上的支持',
+			'needJQueryUI':'IxEdit 需要jQuery UI 支持',
+			'needCurrentJQuery':'IxEdit 需要jQuery1.3以上版本的支持',
+			'needJQuery':'IxEdit 需要jQuery js库的支持。'
 		}
 	},
 	boot: function(){
@@ -96,20 +79,6 @@ var ixedit = {
 	}
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Detect browser language
 ixedit.browserLang = ixedit.detectBrowserLang();
 switch(ixedit.browserLang){
@@ -119,37 +88,219 @@ switch(ixedit.browserLang){
 	case 'ja':
 		ixedit.babyLabel = ixedit.babyLang['ja'];
 		break;
+	case 'zh':
+		ixedit.babyLabel = ixedit.babyLang['zh'];
+		break;
 	default:
 		ixedit.babyLabel = ixedit.babyLang['en'];
 };
 
 
-
 if(ixedit.boot()){ // Is boot true? Here you go the rest.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ---------- IxEdit Lang Property
 ixedit.lang = {
-
+//chinese
+	zh : {
+		'appName':'IxEdit',
+		'listStatusItem':'组项目',
+		'listStatusItems':'组项目',
+		'listStatusSelected':'个操作对象',
+		'inputHeaderUseracton':'动作',
+		'inputHeaderSystemfeedback':'效果',
+		'inputHeaderCondition':'条件',
+		'inputHeaderComment':'备注',
+		'inputHeaderStatusItem':'组项目',
+		'inputHeaderStatusItems':'组项目',
+		'inputHeaderStatusNone':'暂无',
+		'inputHeaderStatusCommented':'注释',
+		'inputLabelElement':'对象选择符',
+		'inputLabelEvent':'事件',
+		'inputLabelPreventDefault':'阻止默认行为',
+		'inputLabelStopBubbling':'阻止事件冒泡',
+		'inputLabelDelay':'延迟',
+		'inputLabelCommand':'命令',
+		'inputLabelCss':'属性',
+		'inputLabelClassName':'Class名',
+		'inputLabelValue':'值',
+		'inputLabelAttribute':'属性',
+		'inputLabelEventName':'事件名',
+		'inputLabelDuration':'持续时间',
+		'inputLabelEffect':'效果',
+		'inputLabelOpacity':'不透明度',
+		'inputLabelEasing':'加减速',
+		'inputLabelStatus':'状态',
+		'inputLabelIncludeComment':'包含备注',
+		'inputLabelFunction':'函数名',
+		'inputLabelArgument':'参数',
+		'inputLabelAlertMessage':'消息',
+		'inputLabelInsertHTMLValue':'HTML',
+		'inputLabelInsertHTMLPoint':'插入点',
+		'inputLabelDraggableMoveCursor':'鼠标移到可移动元素上，指针变成可移动状态',
+		'inputLabelDraggableOpacify':'移动时透明',
+		'inputLabelDraggableRevert':'没有接收移动时返回原处',
+		'inputLabelDraggableContainment':'移不出父容器',
+		'inputLabelResizableKeepAspect':'保持高宽比例',
+		'inputLabelResizableHandle':'允许调整方向',
+		'inputLabelResizableTop':'上',
+		'inputLabelResizableRight':'右',
+		'inputLabelResizableBottom':'下',
+		'inputLabelResizableLeft':'左',
+		'inputLabelResizableTR':'上-右',
+		'inputLabelResizableBR':'下-右',
+		'inputLabelResizableBL':'下-左',
+		'inputLabelResizableTL':'上-左',
+		'inputLabelResizableContainment':'不能超过父容器',
+		'inputLabelDragAxes':'轴',
+		'inputLabelSortableRevert':'插入时有动态效果',
+		'inputLabelAccordionAutoHeight':'锁定高度',
+		'inputLabelAccordionCollapsible':'允许关闭全部',
+		'inputLabelTabsSelected':'默认tab',
+		'inputLabelTabsSelectedAnnotation':'(从1开始，0表示没有默认显示tab)',
+		'inputLabelTabsFade':'渐隐',
+		'inputLabelTabsSlide':'滑动',
+		'inputLabelBlockSwitchFade':'渐隐',
+		'inputLabelBlockSwitchSlide':'滑动',
+		'inputLabelDatePickerFormat':'格式',
+		'inputLabelDatePickerHasButton':'包含日期选择按钮',
+		'inputLabelDatePickerShowMonthAfterYear':'在年之后显示月份',
+		'inputLabelLoadURL':'URL',
+		'inputLabelLoadURLAnnotation':'注意：你请求的远程文件，必须和此页面在同一域下',
+		'inputLabelDialogWidth':'宽度',
+		'inputLabelDialogHeight':'高度',
+		'inputLabelDialogLeft':'左距离',
+		'inputLabelDialogTop':'上距离',
+		'inputLabelDialogDraggable':'允许拖动',
+		'inputLabelDialogButtons':'包含按钮',
+		'inputLabelDialogLabel':'按钮上的文字',
+		'inputLabelDialogId':'ID',
+		'inputLabelDialogLeftAnnotation':'(空表示居中，负值表示右距离)',
+		'inputLabelDialogTopAnnotation':'(空表示居中，负值表示下距离)',
+		'inputLabelJumpUrl':'URL',
+		'eventLoad':'Load:页面加载',
+		'eventUnload':'Unload:页面关闭',
+		'eventChange':'Change:发生变化',
+		'eventClick':'Click:点击',
+		'eventDblClick':'Double Click:双击',
+		'eventDrop':'Drop:接收拖动时',
+		'eventError':'Error:发生错误',
+		'eventFocus':'Focus:获得焦点',
+		'eventFocusOut':'Focus Out:失去焦点',
+		'eventKeyDown':'Key Down:按下键盘按键时',
+		'eventKeyPress':'Key Press:按下字面键时',
+		'eventKeyUp':'Key Up:按键弹起时',
+		'eventMouseDown':'Mouse Down:鼠标任意键被按下时',
+		'eventMouseMove':'Mouse Move:鼠标移动时',
+		'eventMouseOut':'Mouse Out:鼠标移出时',
+		'eventMouseOver':'Mouse Over:鼠标浮过时',
+		'eventMouseUp':'Mouse Up:鼠标按键弹起时',
+		'eventResize':'Resize:改变尺寸时',
+		'eventScroll':'Scroll:滚动时',
+		'eventSelect':'Select:被选中时',
+		'eventSubmit':'Submit:提交时',
+		'insertHTMLOverwrite':'重写选择元素的内部HTML',
+		'insertHTMLInsideBottom':'在选择元素的内部下方插入',
+		'insertHTMLInsideTop':'在选择元素的内部上方插入',
+		'insertHTMLAfter':'在选择元素的后方插入',
+		'insertHTMLBefore':'在选择元素的前方插入',
+		'dragAxesX':'X轴',
+		'dragAxesY':'Y轴',
+		'dragAxesXY':'X轴和Y轴',
+		'mainButtonNew':'新建',
+		'mainButtonDuplicate':'复制副本',
+		'mainButtonDelete':'删除',
+		'mainButtonReload':'刷新',
+		'mainButtonEdit':'编辑',
+		'mainButtonCancel':'取消',
+		'mainButtonReset':'复原',
+		'mainButtonDoneReload':'保存并刷新页面',
+		'mainButtonDone':'保存',
+		'mainButtonClose':'关闭',
+		'mainButtonImport':'导入',
+		'condTypeIf':'匹配',
+		'condTypeIfNot':'不匹配',
+		'of':'',
+		'listHeaderCheck':' ',
+		'listHeaderEvent':'动作事件',
+		'listHeaderTrigger':'动作元素选择符',
+		'listHeaderTarget':'反馈元素选择符',
+		'listHeaderCommand':'反馈元素命令',
+		'listHeaderComment':'备注',
+		'utilityAbout':'关于 ' + ixedit.appName,
+		'utilityDeploy':'导出js代码',
+		'utilityExport':'导出设置',
+		'utilityImport':'导入设置',
+		'utilityShowJson':'显示JSON',
+		'utilityShowDb':'显示数据库记录',
+		'utilityDiscardDb':'丢弃数据表',
+		'commandHelp':'命令帮助',
+		'messageNoCondition':'暂时不要求条件. 点击 \"+\" 按钮可以添加一个',
+		'messageCommndNotSupported':'现在不能编辑此命令',
+		'none':'默认',
+		'normal':'默认',
+		'linear':'无',
+		'add':'添加',
+		'remove':'移除',
+		'alertDeletingItem1':'你确定要删除此项吗?',
+		'alertDeletingItem2':'你确定要删除这些吗? ',
+		'alertDeletingItem3':' 项目?',
+		'alertloadDemo':'当前页面已经存在脚本，要加载吗？',
+		'version':'Version',
+		'copyright':'Created by Sociomedia Inc. <br />Maintained by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
+		'instructionDeploy':'<h2>To embed the generated JavaScript code to your HTML</h2><ol><li>Copy the following JavaScript code.</li><li>Open your HTML file with a text editor.</li><li>Paste the code to very bottom of inside the &lt;head&gt; element.</li><li>Delete the line which is loading IxEdit script file like &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt;.</li><li>Delete the line which is loading IxEdit CSS file like &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; also.</li><li>Save the HTML file and reload it with a browser.</li></ol>',
+		'instructionImport':'<h2>To import data from another IxEdit-editing page</h2><ol><li>Copy the data in the Exporting dialog from the page you want to import from.</li><li>Paste the data into the following text area.</li><li>Hit the Import button.</li></ol>',
+		'instructionExport':'<h2>To export the data to another IxEdit-editing page</h2><ol><li>Copy the following data.</li><li>Go to the IxEdit-editing browser window you want to import to.</li><li>Open Import dialog and paste the data.</li></ol>',
+		'tipRouteBtn':'[待译044]Route Menu',
+		'tipXRayBtn':'点击页面元素以选择对象元素选择符',
+		'instructionXRay1':'点击目标元素以指定对象选择符',
+		'cancel':'取消',
+		'unloadingCaution':'你已经通过IxEdit改变了一些数据，它们尚未保存，如果你关闭/离开/刷新浏览器，改变的数据将丢失。\n\n如果你想保存它们，请先点击取消，然后点击"保存"按钮',
+		'dayNamesMinSu':'日',
+		'dayNamesMinMo':'一',
+		'dayNamesMinTu':'二',
+		'dayNamesMinWe':'三',
+		'dayNamesMinTh':'四',
+		'dayNamesMinFr':'五',
+		'dayNamesMinSa':'六',
+		'dayNamesShortSu':'星期日',
+		'dayNamesShortMo':'星期一',
+		'dayNamesShortTu':'星期二',
+		'dayNamesShortWe':'星期三',
+		'dayNamesShortTh':'星期四',
+		'dayNamesShortFr':'星期五',
+		'dayNamesShortSa':'星期六',
+		'monthNames1':'一月',
+		'monthNames2':'二月',
+		'monthNames3':'三月',
+		'monthNames4':'四月',
+		'monthNames5':'五月',
+		'monthNames6':'六月',
+		'monthNames7':'七月',
+		'monthNames8':'八月',
+		'monthNames9':'九月',
+		'monthNames10':'十月',
+		'monthNames11':'十一月',
+		'monthNames12':'十二月',
+		'monthNamesShort1':'一月',
+		'monthNamesShort2':'二月',
+		'monthNamesShort3':'三月',
+		'monthNamesShort4':'四月',
+		'monthNamesShort5':'五月',
+		'monthNamesShort6':'六月',
+		'monthNamesShort7':'七月',
+		'monthNamesShort8':'八月',
+		'monthNamesShort9':'九月',
+		'monthNamesShort10':'十月',
+		'monthNamesShort11':'十一月',
+		'monthNamesShort12':'十二月',
+		'dayName':'日期',
+		'cmdCat0':'DOM',
+		'cmdCat1':'效果',
+		'cmdCat2':'特效',
+		'cmdCat11':'其他',
+		'cmdCat21':'高级',
+		'datePickerToday':'本月',
+		'datePickerClose':'关闭'
+	},
 	// English
 	en : {
 		'appName':'IxEdit',
@@ -296,7 +447,7 @@ ixedit.lang = {
 		'alertDeletingItem3':' items?',
 		'alertloadDemo':'Some interactions are embedded on this page. Do you want to load them?',
 		'version':'Version',
-		'copyright':'Created by Sociomedia Inc. <br />Develope by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
+		'copyright':'Created by Sociomedia Inc. <br />Maintained by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
 		'instructionDeploy':'<h2>To embed the generated JavaScript code to your HTML</h2><ol><li>Copy the following JavaScript code.</li><li>Open your HTML file with a text editor.</li><li>Paste the code to very bottom of inside the &lt;head&gt; element.</li><li>Delete the line which is loading IxEdit script file like &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt;.</li><li>Delete the line which is loading IxEdit CSS file like &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; also.</li><li>Save the HTML file and reload it with a browser.</li></ol>',
 		'instructionImport':'<h2>To import data by copy-pasting from another IxEdit-editing page</h2><ol><li>Copy data from the Exporting dialog of the page you want to import from.</li><li>Paste the data into the following text area.</li><li>Hit the Import button.</li></ol>',
 		'instructionImportFromDB':'<h2>To import data from existing interactions which have made on this browser</h2><ol><li>Choose one from following table.</li><li>Hit the Import button.</li></ol>',
@@ -502,7 +653,7 @@ ixedit.lang = {
 		'alertDeletingItem3':'項目を本当に削除しますか？',
 		'alertloadDemo':'このページにはインタラクションが埋め込まれています。読み込みますか？',
 		'version':'バージョン',
-		'copyright':'Created by Sociomedia Inc. <br />Develope by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
+		'copyright':'Created by Sociomedia Inc. <br />Maintained by Perchouli  &lt; jp.chenyang@gmail.com  &gt;',
 		'instructionDeploy':'<h2>生成された JavaScript コードを HTML に埋め込むには</h2><ol><li>下の JavaScript コードをコピーします。</li><li>テキストエディタで HTML ファイルを開きます。</li><li>&lt;head&gt; 要素内の一番下にコードをペーストします。</li><li>IxEdit スクリプトファイルを読み込むための &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt; のような行を削除します。</li><li>IxEdit の CSS を読み込むための &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; のような行も削除します。</li><li>HTML ファイルを保存し、ブラウザでリロードします。</li></ol>',
 		'instructionImport':'<h2>他の IxEdit で編集中のページからデータをインポートするには</h2><ol><li>インポート元のページのエクスポートダイアログでデータをコピーします。</li><li>下のテキストエリアにデータをペーストします。</li><li>インポートボタンを押します。</li></ol>',
 		'instructionImportFromDB':'<h2>このブラウザで作成した既存のインタラクションからデータをインポートするには</h2><ol><li>下のテーブルからひとつ選びます。</li><li>インポートボタンを押します。</li></ol>',
@@ -709,7 +860,6 @@ ixedit.ixs.activate = function(isActivating, lineNo){
 		theEditButton.attr('disabled', 'disabled').addClass('disabled'); // Disable the delete button then add class
 	};
 
-	ixedit.updateFullData(); // Save DB
 
 };
 
@@ -3816,7 +3966,6 @@ ixedit.duplicate = function() {
 
 
 
-	this.updateFullData(); // Save DB
 
 };
 
@@ -3862,7 +4011,6 @@ ixedit.save = function(){
 	this.showSelectedItem();
 
 
-	this.updateFullData(); // Save DB
 
 };
 
@@ -3914,7 +4062,6 @@ ixedit.importData = function(dataText){ // Argument is importing JSON string.
 
 	this.loadIxJSONString(theData); // Convert JSON to ixs.
 
-	this.updateFullDataAndRefresh(); // Save DB and refresh list.
 
 };
 
@@ -3974,7 +4121,6 @@ ixedit.deleteIx = function(targetIxNos){ // Argument is the array of target ix
 	ixedit.refreshListButtonStates();
 
 
-	this.updateFullData(); // Save DB.
 
 };
 
@@ -5760,8 +5906,4 @@ jQuery(function(){
 });
 
 
-}; // End of 
-
-if(ixedit.boot()) {
-
-}
+}; // End of if(ixedit.boot()) 

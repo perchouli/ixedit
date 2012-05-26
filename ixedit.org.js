@@ -835,8 +835,6 @@ ixedit.ixs.activate = function(isActivating, lineNo){
 		theEditButton.attr('disabled', 'disabled').addClass('disabled'); // Disable the delete button then add class
 	};
 
-	ixedit.updateFullData(); // Save DB
-
 };
 
 // Generate deploying code.
@@ -3940,10 +3938,6 @@ ixedit.duplicate = function() {
 	ixedit.refreshListButtonStates();
 	this.showSelectedItem();
 
-
-
-	this.updateFullData(); // Save DB
-
 };
 
 
@@ -3986,9 +3980,6 @@ ixedit.save = function(){
 
 	ixedit.refreshListButtonStates();
 	this.showSelectedItem();
-
-
-	this.updateFullData(); // Save DB
 
 };
 
@@ -4039,8 +4030,6 @@ ixedit.importData = function(dataText){ // Argument is importing JSON string.
 	};
 
 	this.loadIxJSONString(theData); // Convert JSON to ixs.
-
-	this.updateFullDataAndRefresh(); // Save DB and refresh list.
 
 };
 
