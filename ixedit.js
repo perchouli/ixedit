@@ -717,15 +717,6 @@ ixedit.lang = {
 };
 
 
-
-
-
-
-
-
-
-
-
 if(ixedit.browserLang){
 	switch(ixedit.browserLang){
 		case 'en':
@@ -733,6 +724,9 @@ if(ixedit.browserLang){
 			break;
 		case 'ja':
 			ixedit.label = ixedit.lang['ja'];
+			break;
+		case 'zh':
+			ixedit.label = ixedit.lang['zh'];
 			break;
 		default:
 			ixedit.label = ixedit.lang['en'];
