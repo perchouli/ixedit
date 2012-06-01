@@ -1,27 +1,10 @@
 @charset 'UTF-8';
-
-/*!
- * IxEdit CSS v1.0b
- * http://ixedit.com/
- *
- * Copyright (c) 2009 Sociomedia Inc.
- * http://www.sociomedia.co.jp/
- * Licensed under GPL.
- * http://ixedit.com/license/
-
- * Date: 2009-12-24
- */
-
-
-
-
 .ixedit-dialog {
 	border: none !important;
 	background: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 }
-
 
 .ixedit-dialog * {
 	font-size: 12px !important;
@@ -609,6 +592,10 @@
 	padding: 2px !important;
 	border: 1px solid #cccccc !important;
 }
+.ixedit-dialog option{
+	color: #333 !important;
+	background: #fff;
+}
 
 
 .ixedit-dialog input[type="text"] {
@@ -629,7 +616,6 @@
 	background-color: #555555 !important;
 	height: 22px;
 }
-
 
 
 
