@@ -249,7 +249,7 @@ ixedit.lang = {
 		'instructionDeploy':'<h2>To embed the generated JavaScript code to your HTML</h2><ol><li>Copy the following JavaScript code.</li><li>Open your HTML file with a text editor.</li><li>Paste the code to very bottom of inside the &lt;head&gt; element.</li><li>Delete the line which is loading IxEdit script file like &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt;.</li><li>Delete the line which is loading IxEdit CSS file like &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; also.</li><li>Save the HTML file and reload it with a browser.</li></ol>',
 		'instructionImport':'<h2>To import data from another IxEdit-editing page</h2><ol><li>Copy the data in the Exporting dialog from the page you want to import from.</li><li>Paste the data into the following text area.</li><li>Hit the Import button.</li></ol>',
 		'instructionExport':'<h2>To export the data to another IxEdit-editing page</h2><ol><li>Copy the following data.</li><li>Go to the IxEdit-editing browser window you want to import to.</li><li>Open Import dialog and paste the data.</li></ol>',
-		'tipRouteBtn':'[待译044]Route Menu',
+		'tipRouteBtn':'导入/导出/部署',
 		'tipXRayBtn':'点击页面元素以选择对象元素选择符',
 		'instructionXRay1':'点击目标元素以指定对象选择符',
 		'cancel':'取消',
@@ -1603,7 +1603,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNAddClass = '添加Class';
 	lang.ja.cmdSNAddClass = 'クラス追加';
 	lang.en.commandHelpAddClass = '<h2>About Add Class Command</h2><p>Add Class command will add the specified class name to the selected element.</p>';
-	lang.zh.commandHelpAddClass = '<h2>[待译001]About Add Class Command</h2><p>Add Class command will add the specified class name to the selected element.</p>';
+	lang.zh.commandHelpAddClass = '<h2>About Add Class Command</h2><p>Add Class command will add the specified class name to the selected element.</p>';
 	lang.ja.commandHelpAddClass = '<h2>クラス追加コマンドについて</h2><p>クラス追加コマンドは、セレクトした要素に指定のクラス名を追加します。</p>';
 
 
@@ -1624,7 +1624,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNRemoveClass = '移除Class';
 	lang.ja.cmdSNRemoveClass = 'クラス削除';
 	lang.en.commandHelpRemoveClass = '<h2>About Remove Class Command</h2><p>Remove Class command will remove the specified class name from the selected element.</p>';
-	lang.zh.commandHelpRemoveClass = '[待译002]<h2>About Remove Class Command</h2><p>Remove Class command will remove the specified class name from the selected element.</p>';
+	lang.zh.commandHelpRemoveClass = '<h2>About Remove Class Command</h2><p>Remove Class command will remove the specified class name from the selected element.</p>';
 	lang.ja.commandHelpRemoveClass = '<h2>クラス削除コマンドについて</h2><p>クラス削除コマンドは、セレクトした要素から指定のクラス名を削除します。</p>';
 	var newCmd = new cmd();
 	newCmd.name = 'removeClass';
@@ -1643,7 +1643,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNAddRemoveClass = '添加/移除Class';
 	lang.ja.cmdSNAddRemoveClass = 'クラス追加/削除';
 	lang.en.commandHelpAddRemoveClass = '<h2>About Add/Remove Class Command</h2><p>Add/Remove Class command will add the specified class name to the selected element if it is not present, or will remove the specified class name from the target element if it is present.</p>';
-	lang.zh.commandHelpAddRemoveClass = '[待译002_2]<h2>About Add/Remove Class Command</h2><p>Add/Remove Class command will add the specified class name to the selected element if it is not present, or will remove the specified class name from the target element if it is present.</p>';
+	lang.zh.commandHelpAddRemoveClass = '<h2>About Add/Remove Class Command</h2><p>Add/Remove Class command will add the specified class name to the selected element if it is not present, or will remove the specified class name from the target element if it is present.</p>';
 	lang.ja.commandHelpAddRemoveClass = '<h2>クラス追加/削除コマンドについて</h2><p>クラス追加/削除コマンドは、セレクトした要素に指定のクラス名がなければ追加し、あれば削除します。</p>';
 	var newCmd = new cmd();
 	newCmd.name = 'toggleClass';
@@ -1663,7 +1663,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNCss = '改变Style';
 	lang.ja.cmdSNCss = 'スタイル変更';
 	lang.en.commandHelpCss = '<h2>About Change Style Command</h2><p>Change Style command will add or change style on the selected element. Specify CSS property and it\'s value. It\'s just like how you edit CSS.</p>';
-	lang.zh.commandHelpCss = '[待译003]<h2>About Change Style Command</h2><p>Change Style command will add or change style on the selected element. Specify CSS property and it\'s value. It\'s just like how you edit CSS.</p>';
+	lang.zh.commandHelpCss = '<h2>About Change Style Command</h2><p>Change Style command will add or change style on the selected element. Specify CSS property and it\'s value. It\'s just like how you edit CSS.</p>';
 	lang.ja.commandHelpCss = '<h2>スタイル変更コマンドについて</h2><p>スタイル変更コマンドは、セレクトした要素のスタイルを追加または変更します。CSS プロパティとその値を指定します。CSS を編集するのと同様の方法です。</p>';
 	var newCmd = new cmd();
 	newCmd.name = 'css';
@@ -1682,7 +1682,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNVal = '改变值';
 	lang.ja.cmdSNVal = '値変更';
 	lang.en.commandHelpVal = '<h2>About Change Value Command</h2><p>Change Value command will change value of value attribute on the selected element.</p><h3>Available Elements</h3><ul><li>button</li><li>input</li><li>li (under ol)</li><li>option</li></ul>';
-	lang.zh.commandHelpVal = '[待译004]<h2>About Change Value Command</h2><p>Change Value command will change value of value attribute on the selected element.</p><h3>Available Elements</h3><ul><li>button</li><li>input</li><li>li (under ol)</li><li>option</li></ul>';
+	lang.zh.commandHelpVal = '<h2>About Change Value Command</h2><p>Change Value command will change value of value attribute on the selected element.</p><h3>Available Elements</h3><ul><li>button</li><li>input</li><li>li (under ol)</li><li>option</li></ul>';
 	lang.ja.commandHelpVal = '<h2>値変更コマンドについて</h2><p>値変更コマンドは、セレクトした要素の value 属性の値を変更します。</p><h3>有効な要素</h3><ul><li>button</li><li>input</li><li>li (ol内)</li><li>option</li></ul>';
 	var newCmd = new cmd();
 	newCmd.name = 'val';
@@ -1702,7 +1702,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNStatus = '改变状态';
 	lang.ja.cmdSNStatus = '状態変更';
 	lang.en.commandHelpStatus = '<h2>About Change Status Command</h2><p>Change Status command will change status of selected element.</p><h3>Available Elements</h3><ul><li>Checked and Unchecked for input[type=\"checkbox\"] and input[type=\"radio\"].</li><li>Selected and Unselected for option.</li><li>Disabled and Enabled for button, input, optgroup, option, select, and textarea.</li></ul>';
-	lang.zh.commandHelpStatus = '[待译005]<h2>About Change Status Command</h2><p>Change Status command will change status of selected element.</p><h3>Available Elements</h3><ul><li>Checked and Unchecked for input[type=\"checkbox\"] and input[type=\"radio\"].</li><li>Selected and Unselected for option.</li><li>Disabled and Enabled for button, input, optgroup, option, select, and textarea.</li></ul>';
+	lang.zh.commandHelpStatus = '<h2>About Change Status Command</h2><p>Change Status command will change status of selected element.</p><h3>Available Elements</h3><ul><li>Checked and Unchecked for input[type=\"checkbox\"] and input[type=\"radio\"].</li><li>Selected and Unselected for option.</li><li>Disabled and Enabled for button, input, optgroup, option, select, and textarea.</li></ul>';
 	lang.ja.commandHelpStatus = '<h2>状態変更コマンドについて</h2><p>状態変更コマンドは、セレクトした要素の状態を変更します。</p><h3>有効な要素</h3><ul><li>Checked と Unchecked は input[type=\"checkbox\"] と input[type=\"radio\"] に使用可。</li><li>Selected と Unselected は option に使用可。</li><li>Disabled と Enabled は button, input, optgroup, option, select, textarea に使用可。</li></ul>';
 	var newCmd = new cmd();
 	newCmd.name = 'status';
@@ -1745,7 +1745,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNRemoveAttr = '移除属性';
 	lang.ja.cmdSNRemoveAttr = '属性削除';
 	lang.en.commandHelpRemoveAttr = '<h2>About Remove Attribute Command</h2><p>Remove Attribute command will remove specified attribute from the selected element.</p>';
-	lang.zh.commandHelpRemoveAttr = '[待译006]<h2>About Remove Attribute Command</h2><p>Remove Attribute command will remove specified attribute from the selected element.</p>';
+	lang.zh.commandHelpRemoveAttr = '<h2>About Remove Attribute Command</h2><p>Remove Attribute command will remove specified attribute from the selected element.</p>';
 	lang.ja.commandHelpRemoveAttr = '<h2>属性削除コマンドについて</h2><p>属性削除コマンドは、セレクトした要素から指定の属性を削除します。</p>';
 	var newCmd = new cmd();
 	newCmd.name = 'removeAttr';
@@ -1765,7 +1765,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNInsertHTML = '插入HTML';
 	lang.ja.cmdSNInsertHTML = 'HTML 挿入';
 	lang.en.commandHelpInsertHtml = '<h2>About Insert HTML Command</h2><p>Insert HTML command will insert specified HTML string (e.g. \"&lt;p&gt;Hello&lt;/p&gt;\") by several ways such as overwriting inside of the selected element, inserting to the inside-bottom of the selected element, inserting to the inside-top of the selected element, inserting after the selected element, or inserting before selected element.</p>';
-	lang.zh.commandHelpInsertHtml = '[待译007]<h2>About Insert HTML Command</h2><p>Insert HTML command will insert specified HTML string (e.g. \"&lt;p&gt;Hello&lt;/p&gt;\") by several ways such as overwriting inside of the selected element, inserting to the inside-bottom of the selected element, inserting to the inside-top of the selected element, inserting after the selected element, or inserting before selected element.</p>';
+	lang.zh.commandHelpInsertHtml = '<h2>About Insert HTML Command</h2><p>Insert HTML command will insert specified HTML string (e.g. \"&lt;p&gt;Hello&lt;/p&gt;\") by several ways such as overwriting inside of the selected element, inserting to the inside-bottom of the selected element, inserting to the inside-top of the selected element, inserting after the selected element, or inserting before selected element.</p>';
 	lang.ja.commandHelpInsertHtml = '<h2>HTML 挿入コマンドについて</h2><p>HTML 挿入コマンドは、指定の HTML 文字列（例：&lt;p&gt;こんにちは&lt;/p&gt;）を次の方法で挿入します。セレクトした要素内を上書き、セレクトした要素内の末尾に挿入、セレクトした要素内の先頭に挿入、セレクトした要素の後に挿入、セレクトした要素の前に挿入。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'insertHTML';
@@ -1802,7 +1802,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNLoad = '插入远程HTML';
 	lang.ja.cmdSNLoad = 'リモート HTML 挿入';
 	lang.en.commandHelpLoad = '<h2>About Insert Remote HTML Command</h2><p>Insert Remote HTML command will insert HTML from a remote file to the selected element. This will overwrite the existing content of the selected element. Remote file you request and this page should be in the same domain. HTML from a different domain cannot be loaded unless this page is on your local computer.</p>';
-	lang.zh.commandHelpLoad = '[待译008]<h2>About Insert Remote HTML Command</h2><p>Insert Remote HTML command will insert HTML from a remote file to the selected element. This will overwrite the existing content of the selected element. Remote file you request and this page should be in the same domain. HTML from a different domain cannot be loaded unless this page is on your local computer.</p>';
+	lang.zh.commandHelpLoad = '<h2>About Insert Remote HTML Command</h2><p>Insert Remote HTML command will insert HTML from a remote file to the selected element. This will overwrite the existing content of the selected element. Remote file you request and this page should be in the same domain. HTML from a different domain cannot be loaded unless this page is on your local computer.</p>';
 	lang.ja.commandHelpLoad = '<h2>リモート HTML 挿入コマンドについて</h2><p>リモート HTML 挿入コマンドは、セレクトした要素に外部ファイルから HTML を挿入します。セレクトした要素内の既存のコンテンツは上書きされます。リクエストするリモートファイルは、このページと同じドメイン上にある必要があります。異なるドメインからは HTML を読み込めませんが、このページがローカルコンピュータにある場合は可能です。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'load';
@@ -1824,7 +1824,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNEmpty = '清空元素';
 	lang.ja.cmdSNEmpty = '要素内を空に';
 	lang.en.commandHelpEmpty = '<h2>About Empty Element Command</h2><p>Empty Element command will remove all child nodes from the selected element.</p>';
-	lang.zh.commandHelpEmpty = '[待译010]<h2>About Empty Element Command</h2><p>Empty Element command will remove all child nodes from the selected element.</p>';
+	lang.zh.commandHelpEmpty = '<h2>About Empty Element Command</h2><p>Empty Element command will remove all child nodes from the selected element.</p>';
 	lang.ja.commandHelpEmpty = '<h2>要素内を空にコマンドについて</h2><p>要素内を空にコマンドは、セレクトした要素のすべての子ノードを削除します。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'empty';
@@ -1846,7 +1846,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNRemove = '移除元素';
 	lang.ja.cmdSNRemove = 'エレメント削除';
 	lang.en.commandHelpRemove = '<h2>About Remove Element Command</h2><p>Remove Element command will remove the selected element from the DOM.</p>';
-	lang.zh.commandHelpRemove = '[待译011]<h2>About Remove Element Command</h2><p>Remove Element command will remove the selected element from the DOM.</p>';
+	lang.zh.commandHelpRemove = '<h2>About Remove Element Command</h2><p>Remove Element command will remove the selected element from the DOM.</p>';
 	lang.ja.commandHelpRemove = '<h2>エレメント削除コマンドについて</h2><p>エレメント削除コマンドは、セレクトした要素を DOM から削除します。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'remove';
@@ -1866,7 +1866,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNShow = '显示';
 	lang.ja.cmdSNShow = '表示';
 	lang.en.commandHelpShow = '<h2>About Show Command</h2><p>Show command will display the selected element if it is hidden. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
-	lang.zh.commandHelpShow = '[待译012]<h2>About Show Command</h2><p>Show command will display the selected element if it is hidden. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
+	lang.zh.commandHelpShow = '<h2>About Show Command</h2><p>Show command will display the selected element if it is hidden. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
 	lang.ja.commandHelpShow = '<h2>表示コマンドについて</h2><p>表示コマンドは、セレクトした要素が非表示状態であれば表示します。インライン要素に対して継続時間を指定した場合、その要素はブロック要素に変更されます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'show';
@@ -1885,7 +1885,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNHide = '隐藏';
 	lang.ja.cmdSNHide = '非表示';
 	lang.en.commandHelpHide = '<h2>About Hide Command</h2><p>Hide command will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
-	lang.zh.commandHelpHide = '[待译013]<h2>About Hide Command</h2><p>Hide command will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
+	lang.zh.commandHelpHide = '<h2>About Hide Command</h2><p>Hide command will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
 	lang.ja.commandHelpHide = '<h2>表示コマンドについて</h2><p>非表示コマンドは、セレクトした要素が表示状態であれば非表示にします。インライン要素に対して継続時間を指定さいた場合、その要素はブロック要素に変更されます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'hide';
@@ -1904,7 +1904,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNToggle = '显示/隐藏';
 	lang.ja.cmdSNToggle = '表示/非表示';
 	lang.en.commandHelpToggle = '<h2>About Show/Hide Command</h2><p>Show/Hide command will show the selected element if it is hidden and will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
-	lang.zh.commandHelpToggle = '[待译014]<h2>About Show/Hide Command</h2><p>Show/Hide command will show the selected element if it is hidden and will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
+	lang.zh.commandHelpToggle = '<h2>About Show/Hide Command</h2><p>Show/Hide command will show the selected element if it is hidden and will hide the selected element if it is shown. If you apply duration on an inline-element, it will be changed as a block-element.</p>';
 	lang.ja.commandHelpToggle = '<h2>表示/非表示コマンドについて</h2><p>表示/非表示コマンドは、セレクトした要素が非表示状態であれば表示し、表示状態であれば非表示にします。インライン要素に対して継続時間を指定さいた場合、その要素はブロック要素に変更されます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'toggle';
@@ -1923,7 +1923,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNSlideDown = '滑下';
 	lang.ja.cmdSNSlideDown = 'スライドダウン';
 	lang.en.commandHelpSlideDown = '<h2>About Slide Down Command</h2><p>Slide Down command will reveal the selected element with sliding-down effect.</p>';
-	lang.zh.commandHelpSlideDown = '[待译015]<h2>About Slide Down Command</h2><p>Slide Down command will reveal the selected element with sliding-down effect.</p>';
+	lang.zh.commandHelpSlideDown = '<h2>About Slide Down Command</h2><p>Slide Down command will reveal the selected element with sliding-down effect.</p>';
 	lang.ja.commandHelpSlideDown = '<h2>スライドダウンコマンドについて</h2><p>スライドダウンコマンドは、セレクトした要素をスライドダウン効果とともに表示します。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'slideDown';
@@ -1942,7 +1942,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNSlideUp = '滑上';
 	lang.ja.cmdSNSlideUp = 'スライドアップ';
 	lang.en.commandHelpSlideUp = '<h2>About Slide Up Command</h2><p>Slide Up command will hide the selected element with sliding-up effect.</p>';
-	lang.zh.commandHelpSlideUp = '[待译016]<h2>About Slide Up Command</h2><p>Slide Up command will hide the selected element with sliding-up effect.</p>';
+	lang.zh.commandHelpSlideUp = '<h2>About Slide Up Command</h2><p>Slide Up command will hide the selected element with sliding-up effect.</p>';
 	lang.ja.commandHelpSlideUp = '<h2>スライドアップコマンドについて</h2><p>スライドアップコマンドは、セレクトした要素をスライドアップ効果とともに非表示にします。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'slideUp';
@@ -1961,7 +1961,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNSlideToggle = '滑下/滑上';
 	lang.ja.cmdSNSlideToggle = 'スライドダウン/アップ';
 	lang.en.commandHelpSlideToggle = '<h2>About Slide Down/Up Command</h2><p>Slide Down/Up command will reveal the selected element with sliding-down effect if it is hidden and will hide the selected element with sliding-up effect if it is shown.</p>';
-	lang.zh.commandHelpSlideToggle = '[待译017]<h2>About Slide Down/Up Command</h2><p>Slide Down/Up command will reveal the selected element with sliding-down effect if it is hidden and will hide the selected element with sliding-up effect if it is shown.</p>';
+	lang.zh.commandHelpSlideToggle = '<h2>About Slide Down/Up Command</h2><p>Slide Down/Up command will reveal the selected element with sliding-down effect if it is hidden and will hide the selected element with sliding-up effect if it is shown.</p>';
 	lang.ja.commandHelpSlideToggle = '<h2>スライドダウン/アップコマンドについて</h2><p>スライドダウン/アップコマンドは、セレクトした要素が非表示状態であればスライドダウン効果とともに表示し、表示状態であればスライドアップ効果とともに非表示にします。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'slideToggle';
@@ -1980,7 +1980,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNFadeIn = '渐显';
 	lang.ja.cmdSNFadeIn = 'フェードイン';
 	lang.en.commandHelpFadeIn = '<h2>About Fade In Command</h2><p>Fade In command will show the selected element with fading-in effect.</p>';
-	lang.zh.commandHelpFadeIn = '[待译018]<h2>About Fade In Command</h2><p>Fade In command will show the selected element with fading-in effect.</p>';
+	lang.zh.commandHelpFadeIn = '<h2>About Fade In Command</h2><p>Fade In command will show the selected element with fading-in effect.</p>';
 	lang.ja.commandHelpFadeIn = '<h2>フェードインコマンドについて</h2><p>フェードインコマンドは、セレクトした要素をフェードイン効果とともに表示します。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'fadeIn';
@@ -1999,7 +1999,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNFadeOut = '渐隐';
 	lang.ja.cmdSNFadeOut = 'フェードアウト';
 	lang.en.commandHelpFadeOut = '<h2>About Fade Out Command</h2><p>Fade Out command will hide the selected element with fading-out effect.</p>';
-	lang.zh.commandHelpFadeOut = '[待译019]<h2>About Fade Out Command</h2><p>Fade Out command will hide the selected element with fading-out effect.</p>';
+	lang.zh.commandHelpFadeOut = '<h2>About Fade Out Command</h2><p>Fade Out command will hide the selected element with fading-out effect.</p>';
 	lang.ja.commandHelpFadeOut = '<h2>フェードアウトコマンドについて</h2><p>フェードアウトコマンドは、セレクトした要素をフェードアウト効果とともに非表示にします。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'fadeOut';
@@ -2018,7 +2018,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNFadeTo = '渐隐至指定值';
 	lang.ja.cmdSNFadeTo = '指定値へフェード';
 	lang.en.commandHelpFadeTo = '<h2>About Fade To Command</h2><p>Fade To command will fade the opacity of the selected element to a specified opacity.</p>';
-	lang.zh.commandHelpFadeTo = '[待译020]<h2>About Fade To Command</h2><p>Fade To command will fade the opacity of the selected element to a specified opacity.</p>';
+	lang.zh.commandHelpFadeTo = '<h2>About Fade To Command</h2><p>Fade To command will fade the opacity of the selected element to a specified opacity.</p>';
 	lang.ja.commandHelpFadeTo = '<h2>指定値へフェードコマンドについて</h2><p>指定値へフェードコマンドは、セレクトした要素を指定の不透明度までフェードします。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'fadeTo';
@@ -2039,7 +2039,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNAnimate = '动画';
 	lang.ja.cmdSNAnimate = 'アニメート';
 	lang.en.commandHelpAnimate = '<h2>About Animate Command</h2><p>Animate command will animate the selected element. Specify the style propertie(s) that will be animated and to what end. Not only sizes (e.g. \"width\", \"margin\", or \"line-height\") but also colors, opacities, and scroll positions can be animated. You can animate multiple properties of one element at the same time.</p>';
-	lang.zh.commandHelpAnimate = '[待译021]<h2>About Animate Command</h2><p>Animate command will animate the selected element. Specify the style propertie(s) that will be animated and to what end. Not only sizes (e.g. \"width\", \"margin\", or \"line-height\") but also colors, opacities, and scroll positions can be animated. You can animate multiple properties of one element at the same time.</p>';
+	lang.zh.commandHelpAnimate = '<h2>About Animate Command</h2><p>Animate command will animate the selected element. Specify the style propertie(s) that will be animated and to what end. Not only sizes (e.g. \"width\", \"margin\", or \"line-height\") but also colors, opacities, and scroll positions can be animated. You can animate multiple properties of one element at the same time.</p>';
 	lang.ja.commandHelpAnimate = '<h2>アニメートコマンドについて</h2><p>アニメートコマンドは、セレクトした要素をアニメートします。アニメートさせるプロパティと、終了値を指定します。サイズだけでなく、色、不透明度、スクロール地点などもアニメートできます。ひとつの要素について複数のプロパティを同時にアニメートさせることができます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'animate';
@@ -2078,7 +2078,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNDraggable = '允许拖动';
 	lang.ja.cmdSNDraggable = 'ドラッグ可能に';
 	lang.en.commandHelpDraggable = '<h2>About Draggable Command</h2><p>Draggable command will make the selected element draggable with the mouse.</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-draggable\" will be added to the draggabled element.</li><li>\"ui-draggable-dragging\" will be added during drag.</li></ul>';
-	lang.zh.commandHelpDraggable = '[待译022]<h2>About Draggable Command</h2><p>Draggable command will make the selected element draggable with the mouse.</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-draggable\" will be added to the draggabled element.</li><li>\"ui-draggable-dragging\" will be added during drag.</li></ul>';
+	lang.zh.commandHelpDraggable = '<h2>About Draggable Command</h2><p>Draggable command will make the selected element draggable with the mouse.</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-draggable\" will be added to the draggabled element.</li><li>\"ui-draggable-dragging\" will be added during drag.</li></ul>';
 	lang.ja.commandHelpDraggable = '<h2>ドラッグ可能にコマンドについて</h2><p>ドラッグ可能にコマンドは、セレクトした要素をマウスでドラッグ可能にします。</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。</p><ul><li>\"ui-draggable\" ドラッグ可能にした要素に追加されます。</li><li>\"ui-draggable-dragging\" ドラッグ中に追加されます。</li></ul>';
 	var newCmd = new cmd;
 	newCmd.name = 'draggable';
@@ -2129,7 +2129,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNDroppable = '允许接收拖动';
 	lang.ja.cmdSNDroppable = 'ドロップ可能に';
 	lang.en.commandHelpDroppable = '<h2>About Droppable Command</h2><p>Droppable command will make the selected element droppable (meaning it accepts being dropped on by draggables).</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-droppable\" will be added to the droppabled element.</li><li>\"drophover\" will be added during being hovered by draggables.</li></ul><h3>For Advanced Use</h3><p>You can specify the reaction kicked by \"Drop\" event by choosing from the event menu. To specify the dropped element as the reaction selector, type \"drop\" in the Reaction Selector textbox.</p>';
-	lang.zh.commandHelpDroppable = '[待译023]<h2>About Droppable Command</h2><p>Droppable command will make the selected element droppable (meaning it accepts being dropped on by draggables).</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-droppable\" will be added to the droppabled element.</li><li>\"drophover\" will be added during being hovered by draggables.</li></ul><h3>For Advanced Use</h3><p>You can specify the reaction kicked by \"Drop\" event by choosing from the event menu. To specify the dropped element as the reaction selector, type \"drop\" in the Reaction Selector textbox.</p>';
+	lang.zh.commandHelpDroppable = '<h2>About Droppable Command</h2><p>Droppable command will make the selected element droppable (meaning it accepts being dropped on by draggables).</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-droppable\" will be added to the droppabled element.</li><li>\"drophover\" will be added during being hovered by draggables.</li></ul><h3>For Advanced Use</h3><p>You can specify the reaction kicked by \"Drop\" event by choosing from the event menu. To specify the dropped element as the reaction selector, type \"drop\" in the Reaction Selector textbox.</p>';
 	lang.ja.commandHelpDraggable = '<h2>ドロップ可能にコマンドについて</h2><p>ドロップ可能にコマンドは、セレクトされた要素をドロップ可能にします（ドラッグ可能にした要素を受け付けます）。</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。</p><ul><li>\"ui-droppable\" ドロップ可能にした要素に追加されます。</li><li>\"drophover\" ドラッグ可能にした要素がホーバーしている間に追加されます。</li></ul><h3>アドバンスドな使用</h3><p>イベントメニューから「ドロップ」を選んで、「ドロップ」イベントによって実行されるリアクションを指定することができます。ドロップされた要素をリアクションのセレクタに指定したい場合は、リアクションセレクタのテキストボックスに「drop」と入力します。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'droppable';
@@ -2149,7 +2149,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNResizable = '允许调整尺寸';
 	lang.ja.cmdSNResizable = 'リサイズ可能に';
 	lang.en.commandHelpResizable = '<h2>About Resizable Command</h2><p>Resizable command will make selected element resizable (meaning it has draggable resize handles). </p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-resizable\" will be added to the resizabled element.</li><li>\"ui-resizable-handle\" will be added to the resize handles which are generated dynamically around the selected element to be as the grabbers.</li><li>\"ui-resizable-n\" will be added to the North grabber.</li><li>\"ui-resizable-s\" will be added to the South grabber.</li><li>\"ui-resizable-e\" will be added to the East grabber.</li><li>\"ui-resizable-w\" will be added to the West grabber.</li><li>\"ui-resizable-se\" will be added to the South-East grabber.</li><li>\"ui-resizable-sw\" will be added to the South-West grabber.</li><li>\"ui-resizable-nw\" will be added to the North-West grabber.</li><li>\"ui-resizable-ne\" will be added to the North-East grabber.</li></ul>';
-	lang.zh.commandHelpResizable = '[待译024]<h2>About Resizable Command</h2><p>Resizable command will make selected element resizable (meaning it has draggable resize handles). </p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-resizable\" will be added to the resizabled element.</li><li>\"ui-resizable-handle\" will be added to the resize handles which are generated dynamically around the selected element to be as the grabbers.</li><li>\"ui-resizable-n\" will be added to the North grabber.</li><li>\"ui-resizable-s\" will be added to the South grabber.</li><li>\"ui-resizable-e\" will be added to the East grabber.</li><li>\"ui-resizable-w\" will be added to the West grabber.</li><li>\"ui-resizable-se\" will be added to the South-East grabber.</li><li>\"ui-resizable-sw\" will be added to the South-West grabber.</li><li>\"ui-resizable-nw\" will be added to the North-West grabber.</li><li>\"ui-resizable-ne\" will be added to the North-East grabber.</li></ul>';
+	lang.zh.commandHelpResizable = '<h2>About Resizable Command</h2><p>Resizable command will make selected element resizable (meaning it has draggable resize handles). </p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-resizable\" will be added to the resizabled element.</li><li>\"ui-resizable-handle\" will be added to the resize handles which are generated dynamically around the selected element to be as the grabbers.</li><li>\"ui-resizable-n\" will be added to the North grabber.</li><li>\"ui-resizable-s\" will be added to the South grabber.</li><li>\"ui-resizable-e\" will be added to the East grabber.</li><li>\"ui-resizable-w\" will be added to the West grabber.</li><li>\"ui-resizable-se\" will be added to the South-East grabber.</li><li>\"ui-resizable-sw\" will be added to the South-West grabber.</li><li>\"ui-resizable-nw\" will be added to the North-West grabber.</li><li>\"ui-resizable-ne\" will be added to the North-East grabber.</li></ul>';
 	lang.ja.commandHelpResizable = '<h2>リサイズ可能にコマンドについて</h2><p>リサイズ可能にコマンドは、セレクトされた要素をリサイズ可能にします（ドラッグ可能なリサイズハンドルを追加します）。</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。</p><ul><li>\"ui-resizable\" リサイズ可能にした要素に追加されます。</li><li>\"ui-resizable-handle\" セレクトした要素の周りに「つまみ」として動的に生成される要素に追加されます。</li><li>\"ui-resizable-n\" 上のつまみに追加されます。</li><li>\"ui-resizable-s\" 下のつまみに追加されます。</li><li>\"ui-resizable-e\" 右のつまみに追加されます。</li><li>\"ui-resizable-w\" 左のつまみに追加されます。</li><li>\"ui-resizable-se\" 右下のつまみに追加されます。</li><li>\"ui-resizable-sw\" 左下のつまみに追加されます。</li><li>\"ui-resizable-nw\" 左上のつまみに追加されます。</li><li>\"ui-resizable-ne\" 右下のつまみに追加されます。</li></ul>';
 	var newCmd = new cmd;
 	newCmd.name = 'resizable';
@@ -2210,7 +2210,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNSortable = '允许排序';
 	lang.ja.cmdSNSortable = '並べ替え可能に';
 	lang.en.commandHelpSortable = '<h2>About Reorderable Command</h2><p>Reorderable command will make the child block elements of the selected element reorderable by dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"reorderable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-sortable\" will be added to the reorderabled element (parent element of the draggabled items).</li></ul>';
-	lang.zh.commandHelpSortable = '[待译025]<h2>About Reorderable Command</h2><p>Reorderable command will make the child block elements of the selected element reorderable by dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"reorderable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-sortable\" will be added to the reorderabled element (parent element of the draggabled items).</li></ul>';
+	lang.zh.commandHelpSortable = '<h2>About Reorderable Command</h2><p>Reorderable command will make the child block elements of the selected element reorderable by dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"reorderable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-sortable\" will be added to the reorderabled element (parent element of the draggabled items).</li></ul>';
 	lang.ja.commandHelpSortable = '<h2>並べ替え可能にコマンドについて</h2><p>並べ替え可能にコマンドは、セレクトされた要素の子ブロック要素をマウスドラッグで並べ替え可能にします。</p><h3>必要な HTML フォーマット</h3><p>&lt;block id=\"reorderable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。</p><ul><li>\"ui-sortable\" 並べ替え可能にした要素（ドラッグ可能になったアイテムの親要素）に追加されます。</li></ul>';
 	var newCmd = new cmd;
 	newCmd.name = 'sortable';
@@ -2258,7 +2258,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNReorderable = '允许选择';
 	lang.ja.cmdSNReorderable = '選択可能に';
 	lang.en.commandHelpSelectable = '<h2>About Selectable Command</h2><p>Selectable command will make the child block elements of the selected element selectable by clicking, ctrl+clicking, and dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"selectable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-selectable\" will be added to the selectabled element (parent element of the items you can select individually).</li><li>\"ui-selecting\" will added to each item during mousedown and drag-selecting.</li><li>\"ui-selected\" will be added to each selected item.</li></ul>';
-	lang.zh.commandHelpSelectable = '[待译026]<h2>About Selectable Command</h2><p>Selectable command will make the child block elements of the selected element selectable by clicking, ctrl+clicking, and dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"selectable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-selectable\" will be added to the selectabled element (parent element of the items you can select individually).</li><li>\"ui-selecting\" will added to each item during mousedown and drag-selecting.</li><li>\"ui-selected\" will be added to each selected item.</li></ul>';
+	lang.zh.commandHelpSelectable = '<h2>About Selectable Command</h2><p>Selectable command will make the child block elements of the selected element selectable by clicking, ctrl+clicking, and dragging with the mouse.</p><h3>Required HTML Format</h3><p>&lt;block id=\"selectable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-selectable\" will be added to the selectabled element (parent element of the items you can select individually).</li><li>\"ui-selecting\" will added to each item during mousedown and drag-selecting.</li><li>\"ui-selected\" will be added to each selected item.</li></ul>';
 	lang.ja.commandHelpSelectable = '<h2>選択可能にコマンドについて</h2><p>選択可能にコマンドは、セレクトされた要素の子ブロック要素をクリック、ctrl+クリック、マウスドラッグで選択可能にします。</p><h3>必要な HTML フォーマット</h3><p>&lt;block id=\"selectable1\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content1&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content2&lt;/block&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。</p><ul><li>\"ui-selectable\" 選択可能にした要素（個別に選択できるアイテムの親要素）に追加されます。</li><li>\"ui-selecting\" 各アイテムをマウスダウンまたはドラッグ中に追加されます。</li><li>\"ui-selected\" 選択した各アイテムに追加されます。</li></ul>';
 	var newCmd = new cmd;
 	newCmd.name = 'selectable';
@@ -2282,7 +2282,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNDatePicker = '生成日期选择控件';
 	lang.ja.cmdSNDatePicker = '日付ピッカー作成';
 	lang.en.commandHelpDatePicker = '<h2>About Make Date Picker Command</h2><p>Make Date Picker command will generate a date picker calendar for the selected textbox.</p><h3>Required HTML Format</h3><p>&lt;input type=\"text\" id=\"datepicker1\" /&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-datepicker\" will be added to the generated calendar block.</li><li>\"ui-datepicker-header\" will be added to the header of the calendar.</li><li>\"ui-datepicker-prev\" and \"ui-datepicker-next\" will be added to the navigation links within the header.</li><li>\"ui-datepicker-prev-hover\" and \"ui-datepicker-next-hover\" will be added to the navigation links durting mouse-hovered.</li><li>\"ui-datepicker-title\" will be added to the title widthin the header.</li><li>\"ui-datepicker-calendar\" will be added to the calendar table.</li><li>\"ui-state-active\" will added to the selected day link.</li><li>\"ui-state-highlight\" will added to the current day link.</li><li>\"ui-state-hover\" will added to each day link during mouse-hovered.</li><li>\"ui-datepicker-buttonpane\" will be added to the button pane.</li><li>\"ui-datepicker-trigger\" will be added to the picker button.</li></ul><p>For more information about dynamically-added classes, see<a href=\"http://jqueryui.com/demos/datepicker/\" target=\"_blank\"> jQuery UI Datepicker documentation</a>.</p><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
-	lang.zh.commandHelpDatePicker = '[待译027]<h2>About Make Date Picker Command</h2><p>Make Date Picker command will generate a date picker calendar for the selected textbox.</p><h3>Required HTML Format</h3><p>&lt;input type=\"text\" id=\"datepicker1\" /&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-datepicker\" will be added to the generated calendar block.</li><li>\"ui-datepicker-header\" will be added to the header of the calendar.</li><li>\"ui-datepicker-prev\" and \"ui-datepicker-next\" will be added to the navigation links within the header.</li><li>\"ui-datepicker-prev-hover\" and \"ui-datepicker-next-hover\" will be added to the navigation links durting mouse-hovered.</li><li>\"ui-datepicker-title\" will be added to the title widthin the header.</li><li>\"ui-datepicker-calendar\" will be added to the calendar table.</li><li>\"ui-state-active\" will added to the selected day link.</li><li>\"ui-state-highlight\" will added to the current day link.</li><li>\"ui-state-hover\" will added to each day link during mouse-hovered.</li><li>\"ui-datepicker-buttonpane\" will be added to the button pane.</li><li>\"ui-datepicker-trigger\" will be added to the picker button.</li></ul><p>For more information about dynamically-added classes, see<a href=\"http://jqueryui.com/demos/datepicker/\" target=\"_blank\"> jQuery UI Datepicker documentation</a>.</p><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
+	lang.zh.commandHelpDatePicker = '<h2>About Make Date Picker Command</h2><p>Make Date Picker command will generate a date picker calendar for the selected textbox.</p><h3>Required HTML Format</h3><p>&lt;input type=\"text\" id=\"datepicker1\" /&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-datepicker\" will be added to the generated calendar block.</li><li>\"ui-datepicker-header\" will be added to the header of the calendar.</li><li>\"ui-datepicker-prev\" and \"ui-datepicker-next\" will be added to the navigation links within the header.</li><li>\"ui-datepicker-prev-hover\" and \"ui-datepicker-next-hover\" will be added to the navigation links durting mouse-hovered.</li><li>\"ui-datepicker-title\" will be added to the title widthin the header.</li><li>\"ui-datepicker-calendar\" will be added to the calendar table.</li><li>\"ui-state-active\" will added to the selected day link.</li><li>\"ui-state-highlight\" will added to the current day link.</li><li>\"ui-state-hover\" will added to each day link during mouse-hovered.</li><li>\"ui-datepicker-buttonpane\" will be added to the button pane.</li><li>\"ui-datepicker-trigger\" will be added to the picker button.</li></ul><p>For more information about dynamically-added classes, see<a href=\"http://jqueryui.com/demos/datepicker/\" target=\"_blank\"> jQuery UI Datepicker documentation</a>.</p><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
 	lang.ja.commandHelpDatePicker = '<h2>日付ピッカー作成コマンドについて</h2><p>日付ピッカー作成コマンドは、セレクトしたテキストボックスに日付選択用のカレンダーを生成します。</p><h3>必要な HTML フォーマット</h3><p>&lt;input type=\"text\" id=\"datepicker1\" /&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。<ul><li>\"ui-datepicker\" 生成されるカレンダーブロックに追加されます。</li><li>\"ui-datepicker-header\" カレンダーのヘッダーに追加されます。</li><li>\"ui-datepicker-prev\" と \"ui-datepicker-next\" ヘッダー内のナビゲーションリンクに追加されます。</li><li>\"ui-datepicker-prev-hover\" と \"ui-datepicker-next-hover\" ヘッダー内のナビゲーションリンクにマウスをホーバーした時に追加されます。</li><li>\"ui-datepicker-title\" ヘッダー内のタイトルに追加されます。</li><li>\"ui-datepicker-calendar\" カレンダーテーブルに追加されます。</li><li>\"ui-state-active\" 選択された日リンクに追加されます。</li><li>\"ui-state-highlight\" 現在の日リンクに追加されます。</li><li>\"ui-state-hover\" マウスホーバー時に各日リンクに追加されます。</li><li>\"ui-datepicker-buttonpane\" ボタンペインに追加されます。</li><li>\"ui-datepicker-trigger\" ピッカーボタンに追加されます。</li></ul><p>動的に追加されるクラス名についての詳細は、<a href=\"http://jqueryui.com/demos/datepicker/\" target=\"_blank\">jQuery UI Datepicker のドキュメンテーション</a>を参照してください。</p><p><a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> ツールを使って jQuery UI の CSS フレームワームにアクセスし、スタイルを一括変更することもできます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'datepicker';
@@ -2334,7 +2334,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNAccordion = '生成折叠面板';
 	lang.ja.cmdSNAccordion = 'アコーディオン作成';
 	lang.en.commandHelpAccordion = '<h2>About Make Accordion Command</h2><p>Make Accordion command will generate an accordion container.</p><h3>Required HTML Format</h3><p>&lt;block id=\"accordion1\"&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header1&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header2&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header3&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-accordion\" will be added to the wrapper block which contains all headers and contents.</li><li>\"ui-accordion-header\" will be added to the header blocks.</li><li>\"ui-accordion-content\" will be added to the content blocks.</li><li>\"ui-state-active\" will added to the selected header block</li><li>\"ui-state-hover\" will added to each header block during mouse-hovered.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
-	lang.zh.commandHelpAccordion = '[待译028]<h2>About Make Accordion Command</h2><p>Make Accordion command will generate an accordion container.</p><h3>Required HTML Format</h3><p>&lt;block id=\"accordion1\"&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header1&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header2&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header3&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-accordion\" will be added to the wrapper block which contains all headers and contents.</li><li>\"ui-accordion-header\" will be added to the header blocks.</li><li>\"ui-accordion-content\" will be added to the content blocks.</li><li>\"ui-state-active\" will added to the selected header block</li><li>\"ui-state-hover\" will added to each header block during mouse-hovered.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
+	lang.zh.commandHelpAccordion = '<h2>About Make Accordion Command</h2><p>Make Accordion command will generate an accordion container.</p><h3>Required HTML Format</h3><p>&lt;block id=\"accordion1\"&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header1&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header2&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header3&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-accordion\" will be added to the wrapper block which contains all headers and contents.</li><li>\"ui-accordion-header\" will be added to the header blocks.</li><li>\"ui-accordion-content\" will be added to the content blocks.</li><li>\"ui-state-active\" will added to the selected header block</li><li>\"ui-state-hover\" will added to each header block during mouse-hovered.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
 	lang.ja.commandHelpAccordion = '<h2>アコーディオン作成コマンドについて</h2><p>アコーディオン作成コマンドは、アコーディオンコンテナーを生成します。</p><h3>必要な HTML フォーマット</h3><p>&lt;block id=\"accordion1\"&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header1&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header2&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;&lt;a href=&quot;#&quot;&gt;Header3&lt;/a&gt;&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。<ul><li>\"ui-accordion\" すべてのヘッダーとコンテンツを含む親要素に追加されます。</li><li>\"ui-accordion-header\" ヘッダーブロックに追加されます。</li><li>\"ui-accordion-content\" コンテンツブロックに追加されます。</li><li>\"ui-state-active\" 選択されたヘッダーブロックに追加されます。</li><li>\"ui-state-hover\" 各ヘッダーブロックへのマウスホーバー時に追加されます。</li></ul><p><a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> ツールを使って jQuery UI の CSS フレームワームにアクセスし、スタイルを一括変更することもできます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'accordion';
@@ -2366,7 +2366,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNTabs = '生成tab';
 	lang.ja.cmdSNTabs = 'タブ作成';
 	lang.en.commandHelpTabs = '<h2>About Make Tabs Command</h2><p>Make Tabs command will generate tabs container.</p><h3>Required HTML Format</h3><p>&lt;block id=&quot;tabs1&quot;&gt;<br />&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content1&quot;&gt;Tab1&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content2&quot;&gt;Tab2&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content3&quot;&gt;Tab3&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content1&quot;&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content2&quot;&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content3&quot;&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-tabs\" will be added to the wrapper block which contains all tabs and content blocks.</li><li>\"ui-tabs-nav\" will be added to the UL element which contains items to become tabs.</li><li>\"ui-tabs-selected\" and \"ui-state-active\" will be added to the selected tab (LI element).</li><li>\"ui-state-hover\" will added to each tab (LI element) during mouse-hovered.</li><li>\"ui-tabs-panel\" will be added to each content blocks.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
-	lang.zh.commandHelpTabs = '[待译029]<h2>About Make Tabs Command</h2><p>Make Tabs command will generate tabs container.</p><h3>Required HTML Format</h3><p>&lt;block id=&quot;tabs1&quot;&gt;<br />&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content1&quot;&gt;Tab1&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content2&quot;&gt;Tab2&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content3&quot;&gt;Tab3&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content1&quot;&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content2&quot;&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content3&quot;&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-tabs\" will be added to the wrapper block which contains all tabs and content blocks.</li><li>\"ui-tabs-nav\" will be added to the UL element which contains items to become tabs.</li><li>\"ui-tabs-selected\" and \"ui-state-active\" will be added to the selected tab (LI element).</li><li>\"ui-state-hover\" will added to each tab (LI element) during mouse-hovered.</li><li>\"ui-tabs-panel\" will be added to each content blocks.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
+	lang.zh.commandHelpTabs = '<h2>About Make Tabs Command</h2><p>Make Tabs command will generate tabs container.</p><h3>Required HTML Format</h3><p>&lt;block id=&quot;tabs1&quot;&gt;<br />&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content1&quot;&gt;Tab1&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content2&quot;&gt;Tab2&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content3&quot;&gt;Tab3&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content1&quot;&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content2&quot;&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content3&quot;&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-tabs\" will be added to the wrapper block which contains all tabs and content blocks.</li><li>\"ui-tabs-nav\" will be added to the UL element which contains items to become tabs.</li><li>\"ui-tabs-selected\" and \"ui-state-active\" will be added to the selected tab (LI element).</li><li>\"ui-state-hover\" will added to each tab (LI element) during mouse-hovered.</li><li>\"ui-tabs-panel\" will be added to each content blocks.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
 	lang.ja.commandHelpTabs = '<h2>タブ作成コマンドについて</h2><p>タブ作成コマンドは、タブコンテナーを生成します。</p><h3>必要な HTML フォーマット</h3><p>&lt;block id=&quot;tabs1&quot;&gt;<br />&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content1&quot;&gt;Tab1&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content2&quot;&gt;Tab2&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=&quot;#content3&quot;&gt;Tab3&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content1&quot;&gt;Content1&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content2&quot;&gt;Content2&lt;/block&gt;<br />&nbsp;&nbsp;&lt;block id=&quot;content3&quot;&gt;Content3&lt;/block&gt;<br />&lt;/block&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。<ul><li>\"ui-tabs\" すべてのタブとコンテンツブロックを含む親要素に追加されます。</li><li>\"ui-tabs-nav\" タブとなる項目を含む UL 要素に追加されます。</li><li>\"ui-tabs-selected\" と \"ui-state-active\" 選択されたタブ（LI 要素）に追加されます。</li><li>\"ui-state-hover\" 各タブ（LI 要素）へのマウスホーバー時に追加されます。</li><li>\"ui-tabs-panel\" 各コンテンツブロックに追加されます。</li></ul><p><a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> ツールを使って jQuery UI の CSS フレームワームにアクセスし、スタイルを一括変更することもできます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'tabs';
@@ -2424,7 +2424,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNDialog = '生成弹出对话框';
 	lang.ja.cmdSNDialog = 'ダイアログ作成';
 	lang.en.commandHelpDialog = '<h2>About Make Dialog Command</h2><p>Make Dialog command will generate a modal dialog. A wrapper block, a titlebar, and a button pane will be generated around the original block.</p><h3>Required HTML Format</h3><p>&lt;div id=&quot;dialog1&quot; title=&quot;My Dialog1&quot;&gt;Content&lt;/div&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-dialog\" will be added to the wrapper block which is generated dynamically to wrap the selected block, the titlebar and the button bar.</li><li>\"ui-dialog-titlebar\" will be added to the dynamically-generated titlebar.</li><li>\"ui-dialog-title-dialog\" will be added to the dynamically-generated title on the titlebar. The title string is from the title attribute of the selected element.</li><li>\"ui-dialog-titlebar-close\" will added to the dynamically-generated close link on the titlebar.</li><li>\"ui-dialog-content\" will be added to the selected element.</li><li>\"ui-dialog-buttonpane\" will be added to the dynamically-generated button pane.</li><li>\"ui-widget-overlay\" will be added to the dynamically-generated background overlay.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
-	lang.zh.commandHelpDialog = '[待译030]<h2>About Make Dialog Command</h2><p>Make Dialog command will generate a modal dialog. A wrapper block, a titlebar, and a button pane will be generated around the original block.</p><h3>Required HTML Format</h3><p>&lt;div id=&quot;dialog1&quot; title=&quot;My Dialog1&quot;&gt;Content&lt;/div&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-dialog\" will be added to the wrapper block which is generated dynamically to wrap the selected block, the titlebar and the button bar.</li><li>\"ui-dialog-titlebar\" will be added to the dynamically-generated titlebar.</li><li>\"ui-dialog-title-dialog\" will be added to the dynamically-generated title on the titlebar. The title string is from the title attribute of the selected element.</li><li>\"ui-dialog-titlebar-close\" will added to the dynamically-generated close link on the titlebar.</li><li>\"ui-dialog-content\" will be added to the selected element.</li><li>\"ui-dialog-buttonpane\" will be added to the dynamically-generated button pane.</li><li>\"ui-widget-overlay\" will be added to the dynamically-generated background overlay.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
+	lang.zh.commandHelpDialog = '<h2>About Make Dialog Command</h2><p>Make Dialog command will generate a modal dialog. A wrapper block, a titlebar, and a button pane will be generated around the original block.</p><h3>Required HTML Format</h3><p>&lt;div id=&quot;dialog1&quot; title=&quot;My Dialog1&quot;&gt;Content&lt;/div&gt;</p><h3>Dynamic Classes</h3><p>You can change styles with those dyamically-added class names.</p><ul><li>\"ui-dialog\" will be added to the wrapper block which is generated dynamically to wrap the selected block, the titlebar and the button bar.</li><li>\"ui-dialog-titlebar\" will be added to the dynamically-generated titlebar.</li><li>\"ui-dialog-title-dialog\" will be added to the dynamically-generated title on the titlebar. The title string is from the title attribute of the selected element.</li><li>\"ui-dialog-titlebar-close\" will added to the dynamically-generated close link on the titlebar.</li><li>\"ui-dialog-content\" will be added to the selected element.</li><li>\"ui-dialog-buttonpane\" will be added to the dynamically-generated button pane.</li><li>\"ui-widget-overlay\" will be added to the dynamically-generated background overlay.</li></ul><p>You can also change styles with the <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> tool by accessing jQuery UI CSS framework.</p>';
 	lang.ja.commandHelpDialog = '<h2>ダイアログ作成コマンドについて</h2><p>ダイアログ作成コマンドは、モーダルダイアログを生成します。ラッパーブロック、タイトルバー、そしてボタンペインが元のブロックの周りに生成されます。</p><h3>必要な HTML フォーマット</h3><p>&lt;div id=&quot;dialog1&quot; title=&quot;My Dialog1&quot;&gt;Content&lt;/div&gt;</p><h3>動的なクラス</h3><p>これらの動的に追加されるクラス名を使ってスタイルを変更できます。<ul><li>\"ui-dialog\" 動的に生成されるラッパーブロックに追加されます。セレクトした要素、タイトルバー、ボタンペインは、このラッパーブロックの中に入ります。</li><li>\"ui-dialog-titlebar\" 動的に生成されるタイトルバーに追加されます。</li><li>\"ui-dialog-title-dialog\" タイトルバー上に動的に生成されるタイトルに追加されます。タイトル文字列はセレクトした要素のタイトル属性から作られます。</li><li>\"ui-dialog-titlebar-close\" タイトルバー上に動的に生成されるクローズリンクに追加されます。</li><li>\"ui-dialog-content\" セレクトされた要素に追加されます。</li><li>\"ui-dialog-buttonpane\" 動的に生成されるボタンペインに追加されます。</li><li>\"ui-widget-overlay\" 動的に生成される背景オーバーレイに追加されます。</li></ul><p><a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">ThemeRoller</a> ツールを使って jQuery UI の CSS フレームワームにアクセスし、スタイルを一括変更することもできます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'dialog';
@@ -2534,7 +2534,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNAlert = 'Alert警告';
 	lang.ja.cmdSNAlert = 'アラート';
 	lang.en.commandHelpAlert = '<h2>About Alert Command</h2><p>Alert command will show a regular alertbox generated by JavaScript\'s \"window.alert()\" function with the specified message string. You can use \"\\n\" for return and \"\\t\" for tab spacing, but single quotation will be ignored.</p>';
-	lang.zh.commandHelpAlert = '[待译031]<h2>About Alert Command</h2><p>Alert command will show a regular alertbox generated by JavaScript\'s \"window.alert()\" function with the specified message string. You can use \"\\n\" for return and \"\\t\" for tab spacing, but single quotation will be ignored.</p>';
+	lang.zh.commandHelpAlert = '<h2>About Alert Command</h2><p>Alert command will show a regular alertbox generated by JavaScript\'s \"window.alert()\" function with the specified message string. You can use \"\\n\" for return and \"\\t\" for tab spacing, but single quotation will be ignored.</p>';
 	lang.ja.commandHelpAlert = '<h2>アラートコマンドについて</h2><p>アラートコマンドは、JavaScript の \"window.alert()\" ファンクションを使って、指定のメッセージ文字列とともに通常のアラートボックスを表示します。\"\\n\" を改行に、\"\\t\" をタブスペースに使えますが、シングルクォーテーションは無効です。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'alert';
@@ -2557,7 +2557,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNJump = '跳转';
 	lang.ja.cmdSNJump = 'ジャンプ';
 	lang.en.commandHelpJump = '<h2>About Jump Command</h2><p>Jump command will make the browser access the specified URL.</p>';
-	lang.zh.commandHelpJump = '[待译032]<h2>About Jump Command</h2><p>Jump command will make the browser access the specified URL.</p>';
+	lang.zh.commandHelpJump = '<h2>About Jump Command</h2><p>Jump command will make the browser access the specified URL.</p>';
 	lang.ja.commandHelpJump = '<h2>ジャンプコマンドについて</h2><p>ジャンプコマンドによって、ブラウザは指定の URL にアクセスします。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'jump';
@@ -2579,7 +2579,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNTrigger = '发送事件';
 	lang.ja.cmdSNTrigger = 'イベント発行';
 	lang.en.commandHelpTrigger = '<h2>About Send Event Command</h2><p>Send Event command will send the specified event to the selected element. For example, if you send a \"Click\" event to the element \"#button1\", the same thing will happen as you click \"#button1\".</p>';
-	lang.zh.commandHelpTrigger = '[待译033]<h2>About Send Event Command</h2><p>Send Event command will send the specified event to the selected element. For example, if you send a \"Click\" event to the element \"#button1\", the same thing will happen as you click \"#button1\".</p>';
+	lang.zh.commandHelpTrigger = '<h2>About Send Event Command</h2><p>Send Event command will send the specified event to the selected element. For example, if you send a \"Click\" event to the element \"#button1\", the same thing will happen as you click \"#button1\".</p>';
 	lang.ja.commandHelpTrigger = '<h2>イベント発行コマンドについて</h2><p>イベント発行コマンドは、指定のイベントをセレクトした要素に送ります。例えば、「#button1」という要素に「Click」イベントを送ると、「#button1」をクリックしたのと同じことが起こります。</p>';
 	var newCmd = new cmd();
 	newCmd.name = 'trigger';
@@ -2600,7 +2600,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNExecutejQuery = '执行 jQuery';
 	lang.ja.cmdSNExecutejQuery = 'jQuery 実行';
 	lang.en.commandHelpExecutejQuery = '<h2>About Execute jQuery Command</h2><p>Execute jQuery command will let you write a jQuery script. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
-	lang.zh.commandHelpExecutejQuery = '[待译034]<h2>About Execute jQuery Command</h2><p>Execute jQuery command will let you write a jQuery script. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
+	lang.zh.commandHelpExecutejQuery = '<h2>About Execute jQuery Command</h2><p>Execute jQuery command will let you write a jQuery script. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
 	lang.ja.commandHelpExecutejQuery = '<h2>jQuery 実行コマンドについて</h2><p>jQuery 実行コマンドを使えば、自分で jQuery スクリプトを書いて、IxEdit のコマンドだけでは作成できないようなプログラミングをページに追加することができます。</p><h3>注意</h3><p>もしタイプミスなどが原因で構文エラーとなった場合、IxEdit が起動しなくなる恐れがあります。そのような場合には、\"inactivatingAll\" フラグを立てます。HTML 内の ixedit.js を読み込んでいる行の後に下記の記述を加えます。</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>これによって IxEdit が起動し、スクリプトを修正することができます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'executeJQuery';
@@ -2625,7 +2625,7 @@ ixedit.preAssignCmds = function(){
 	lang.zh.cmdSNExecuteFunction = '执行函数';
 	lang.ja.cmdSNExecuteFunction = 'ファンクション実行';
 	lang.en.commandHelpExecuteFunction = '<h2>About Execute Function Command</h2><p>Execute Function command will let you specifiy an existing function and it\'s argument to be executed. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
-	lang.zh.commandHelpExecuteFunction = '[待译035]<h2>About Execute Function Command</h2><p>Execute Function command will let you specifiy an existing function and it\'s argument to be executed. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
+	lang.zh.commandHelpExecuteFunction = '<h2>About Execute Function Command</h2><p>Execute Function command will let you specifiy an existing function and it\'s argument to be executed. Using this command, you can add some advanced programming which cannot be made by IxEdit\'s built-in commands to the page.</p><h3>Caution</h3><p>If you got a syntac error caused by somthing like typos, IxEdit may not be able to be booted. In that case, please turn the \"inactivatingAll\" flag up by adding following line to the HTML file right after the line loading ixedit.js.</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>This might help IxEdit boot and you to modify your script.</p>';
 	lang.ja.commandHelpExecuteFunction = '<h2>jQuery 実行コマンドについて</h2><p>ファンクション実行コマンドを使えば、既存の関数とその引数を指定して、IxEdit のコマンドだけでは作成できないようなプログラミングをページに追加することができます。</p><h3>注意</h3><p>もしタイプミスなどが原因で構文エラーとなった場合、IxEdit が起動しなくなる恐れがあります。そのような場合には、\"inactivatingAll\" フラグを立てます。HTML 内の ixedit.js を読み込んでいる行の後に下記の記述を加えます。</p><p>&lt;script type=&quot;text/javascript&quot;&gt;ixedit.inactivatingAll=true&lt;/script&gt;</p><p>これによって IxEdit が起動し、スクリプトを修正することができます。</p>';
 	var newCmd = new cmd;
 	newCmd.name = 'executeFunction';
@@ -5243,7 +5243,7 @@ ixedit.generateDialogMain = function(){
 				ixedit.showIxlist(); // This is needed to enable/disable buttons
 			},
 			"3": function() { // Reload
-				ixedit.updatePrefsDataAndReload();
+				//ixedit.updatePrefsDataAndReload();
 			},
 			"4": function() { // Edit
 				if(ixedit.prefs.selectedLineNo.length>0){
@@ -5284,7 +5284,7 @@ ixedit.generateDialogMain = function(){
 					ixedit.prefs.selectedLineNo.length = 1;
 					ixedit.prefs.selectedLineNo[0] = ixedit.getListItemNo(targetIxNo); // update selectedLineNo.
 				};
-				ixedit.updateIxDataAndReload(); // Save DB and reload.
+				//ixedit.updateIxDataAndReload(); // Save DB and reload.
 			},
 			"8": function() { // Done
 				ixedit.save();
@@ -5959,8 +5959,8 @@ replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 jQuery(function(){
 	if(!ixedit.deployed){
 		ixedit.initialize();
-	ixedit.makeDialogBase()
-	ixedit.generateDialogMain();
+		ixedit.makeDialogBase()
+		ixedit.generateDialogMain();
 	}
 });
 
