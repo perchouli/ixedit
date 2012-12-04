@@ -5,16 +5,26 @@ IxEdit is a JavaScript-based interaction design tool for the web. With IxEdit, d
 
 ### The project is compatible with those browsers.
 
-- Firefox 12.0
-
-- Chrome 19.0.1084.46
+- Firefox 12.0+
+- IE8+
+- Chrome 19.0.1084.46+
 
 ### Install
 
-> `<script type="text/javascript" src="../jquery/jquery-plus-jquery-ui.js"></script>`
-> `<script type="text/javascript" src="../ixedit.js"></script>`
-> `<link type="text/css" rel="stylesheet" charset="utf-8" href="../ixedit.css">`
-> `<link type="text/css" rel="stylesheet" charset="utf-8" href="../ui-sui.css">`
+#### Offline
+
+Enter ixedit project folder:
+
+    <script type="text/javascript" src="jquery/jquery-plus-jquery-ui.js"></script>`
+    <script type="text/javascript" src="ixedit.js"></script>`
+    <link type="text/css" rel="stylesheet" charset="utf-8" href="ixedit.css">`
+    <link type="text/css" rel="stylesheet" charset="utf-8" href="ui-sui.css">`
+    
+#### Online
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/perchouli/ixedit/master/ixedit.js"></script>
+    <link href="http://perchouli.github.com/ixedit/stylesheets/ixedit.css" rel="stylesheet">
 
 ### Basic operation flow
 
@@ -22,3 +32,12 @@ IxEdit is a JavaScript-based interaction design tool for the web. With IxEdit, d
 2. In the action edit area, specify an event and target element(s) as the trigger of interaction.
 3. In the reaction edit area, specify a command and its parameters. You can make multiple reactions for one action.
 4. Click “Done” button to save the interaction you created. IxEdit Dialog switches back to the list view.
+
+### Example
+
+- Open the `index.html` file inside of a web browser.
+- if you installed python, run 
+
+> python server.py
+
+And access `http://127.0.0.1:8000`.

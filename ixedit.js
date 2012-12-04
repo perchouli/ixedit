@@ -2862,24 +2862,6 @@ ixedit.fixPositionPrefs = function(){
 	};
 };
 
-
-ixedit.updatePositionPrefs = function(){
-	var dialogPosition = jQuery('#ixedit-dialog-main').position();
-	var scrollTop = jQuery(window).scrollTop();
-	var scrollLeft = jQuery(window).scrollLeft();
-
-	ixedit.commonPrefs.inspectorTop = dialogPosition.top;
-	if(ixedit.commonPrefs.inspectorShaded == false){ // If not shaded.
-		ixedit.commonPrefs.inspectorLeft = dialogPosition.left; // Put current left position to commonPrefs.
-		ixedit.commonPrefs.inspectorWindowOffsetX = dialogPosition.left - scrollLeft;
-	} else { // If shaded.
-		ixedit.commonPrefs.inspectorLeft = dialogPosition.left - 215; // Put left position of opened state to commonPrefs.
-		ixedit.commonPrefs.inspectorWindowOffsetX = dialogPosition.left - scrollLeft - 215;
-	};
-
-	ixedit.commonPrefs.inspectorWindowOffsetY = dialogPosition.top - scrollTop;
-};
-
 ixedit.positDialogMain = function(){
 	ixedit.fixPositionPrefs();
 	var scrollLeft = jQuery(window).scrollLeft();
@@ -4203,6 +4185,43 @@ ixedit.selectOne = function(selectElm, theVal){ // select element, value
 	};
 };
 
+// Generate Element Inputs UI.
+ixedit.appendElementInputs = function (targetObj, name, active, trigger, event, preventDefault, stopBubbling, isWithEffect, key){
+
+	var label = ixedit.label;
+	var elementHTML = new Array();
+	elementHTML[elementHTML.length] = '<div class="ixedit-basicinputs"><table><tr><td class="ixedit-basicdetails">';
+
+	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-event"><tr><td class="ixedit-labelarea-event ixedit-labelarea-default"><label>' + label.inputLabelEvent + '</label></td><td class="ixedit-inputarea-event ixedit-inputarea-xlarge">';
+	elementHTML[elementHTML.length] = '<select id="ixedit-event" onchange="ixedit.showHideTriggers(jQuery(this), ixedit.gimmickAnimation)">';
+	elementHTML[elementHTML.length] = ixedit.evtMenuSource; // Source of event menu.
+	elementHTML[elementHTML.length] = '</select>';
+	elementHTML[elementHTML.length] = '</td><td style="padding: 0 !important">';
+	// For Future Key Press Feature	
+	// elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-key"><tr><td class="ixedit-labelarea-xsmall">Key</td><td class="ixedit-inputarea-xsmall"><input type="text" id="ixedit-key" onfocus="this.select()" value="' + key + '" /></td><td>&nbsp;</td></tr></table>';
+	elementHTML[elementHTML.length] = '</td></tr></table>';
+
+	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-trigger"><tr><td class="ixedit-labelarea-trigger ixedit-labelarea-default"><label>' + label.inputLabelElement + '</label></td><td class="ixedit-inputarea-trigger"><input type="text" id="ixedit-trigger" /></td><td class="ixedit-inputarea-xray"><button class="ixedit-xraybtn" onclick="ixedit.xRay.startXRay(jQuery(\'#ixedit-trigger\'))" title="' + label.tipXRayBtn + '">&nbsp;</button></td></tr></table>';
+
+
+	elementHTML[elementHTML.length] = '</td>';
+	elementHTML[elementHTML.length] = '<td class="ixedit-tinybtnarea">&nbsp;</td>';
+	elementHTML[elementHTML.length] = '</tr></table></div>';
+	jQuery(elementHTML.join('')).appendTo(targetObj);
+
+	jQuery('#ixedit-trigger').val(trigger);
+
+	jQuery('.ixedit-xraybtn', jQuery('.ixedit-basicdetails')).mousedown(function(){jQuery(this).addClass('ixedit-xraybtn-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-xraybtn-pushed')});
+	
+	var theEventSelector = jQuery('#ixedit-event', targetObj);
+	this.selectOne(theEventSelector, event);
+	this.showHideTriggers(theEventSelector, false);
+
+	jQuery('#ixedit-key').keypress(function (e) {
+		jQuery(this).val(e.which);
+		return false;
+	});
+};
 
 // Generate Basic Inputs UI.
 ixedit.appendBasicInputs = function (targetObj, name, active, trigger, event, preventDefault, stopBubbling, isWithEffect, key){
@@ -4681,10 +4700,13 @@ ixedit.resetIxInputBox = function(){
 // Refresh Edit View with given ix instance.
 ixedit.refreshIxInputBox = function(ixObj){
 
+	jQuery('#ixedit-elementitems').empty(); // Clear
 	jQuery('#ixedit-basicitems').empty(); // Clear
 	jQuery('#ixedit-actionitems').empty(); // Clear
 	jQuery('#ixedit-conditionitems').empty(); // Clear
 	jQuery('#ixedit-commentitems').empty(); // Clear
+	console.log(ixObj.name)
+	this.appendElementInputs(jQuery('#ixedit-elementitems'), ixObj.name, ixObj.active, ixObj.trigger, ixObj.event, ixObj.preventDefault, ixObj.stopBubbling, false); // Basic inputs
 
 	this.appendBasicInputs(jQuery('#ixedit-basicitems'), ixObj.name, ixObj.active, ixObj.trigger, ixObj.event, ixObj.preventDefault, ixObj.stopBubbling, false); // Basic inputs
 
@@ -5197,11 +5219,26 @@ ixedit.fixDialogResize = function(){
 ixedit.makeDialogBase = function(){
 	var label = this.label;
 	// Make a div block named ixedit-ui on the very top of the page, then insert input controls to it.
-	jQuery('<div id="ixedit-ui" title="IxEdit"><div id="ixedit-inputbox"><div id="ixedit-basic"><table id="ixedit-basictitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + label.inputHeaderUseracton + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table><div id="ixedit-basicitems"></div></div><div id="ixedit-action"><table id="ixedit-actiontitle"><tr><td class="unchian-disclosurearea-action"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-action">' + label.inputHeaderSystemfeedback + '</td><td class="ixedit-titlestatusarea-action">&nbsp;</td></tr></table><div id="ixedit-actionitems"></div></div><div id="ixedit-condition"><table id="ixedit-conditiontitle"><tr><td class="unchian-disclosurearea-condition"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-condition">' + label.inputHeaderCondition + '</td><td class="ixedit-titlestatusarea-condition">&nbsp;</td></tr></table><div id="ixedit-conditionitems"></div></div><div id="ixedit-cmnt"><table id="ixedit-commenttitle"><tr><td class="unchian-disclosurearea-comment"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-comment">' + label.inputHeaderComment + '</td><td class="ixedit-titlestatusarea-comment">&nbsp;</td></tr></table><div id="ixedit-commentitems"></div></div></div></div>').prependTo(jQuery('body'));
+
+	jQuery('<div id="ixedit-ui" title="IxEdit"><div id="ixedit-inputbox">'
+			+'<div id="ixedit-element">'
+				+ '<table id="ixedit-elementtitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + 'Elements'/* TODO: trans*/ + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
+				+ '<div id="ixedit-elementitems"></div>'
+			+ '</div>'
+			+'<div id="ixedit-basic">'
+				+ '<table id="ixedit-basictitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + label.inputHeaderUseracton + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
+				+ '<div id="ixedit-basicitems"></div>'
+			+ '</div>'
+			+ '<div id="ixedit-action">'
+				+ '<table id="ixedit-actiontitle"><tr><td class="unchian-disclosurearea-action"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-action">' + label.inputHeaderSystemfeedback + '</td><td class="ixedit-titlestatusarea-action">&nbsp;</td></tr></table>'
+				+ '<div id="ixedit-actionitems"></div>'
+			+ '</div>'
+			+ '<div id="ixedit-condition"><table id="ixedit-conditiontitle"><tr><td class="unchian-disclosurearea-condition"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-condition">' + label.inputHeaderCondition + '</td><td class="ixedit-titlestatusarea-condition">&nbsp;</td></tr></table><div id="ixedit-conditionitems"></div></div><div id="ixedit-cmnt"><table id="ixedit-commenttitle"><tr><td class="unchian-disclosurearea-comment"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-comment">' + label.inputHeaderComment + '</td><td class="ixedit-titlestatusarea-comment">&nbsp;</td></tr></table><div id="ixedit-commentitems"></div></div></div></div>').prependTo(jQuery('body'));
 	// Insert ix list to the top of ixedit-ui.
 	jQuery('<div id="ixlist" style="display: none"><div id="ixedit-listheader"><table class="ixedit-table ixedit-table-header"></table></div><div id="ixedit-listbody"><table class="ixedit-table ixedit-table-body"></table></div></div>').prependTo(jQuery('#ixedit-ui'));
 	jQuery('<div id="ixedit-utility"><button id="ixedit-routebtn" title="' + label.tipRouteBtn + '">&nbsp;</button><div id="ixedit-routemenu"><ul><li id="ixedit-showAbout">' + label.utilityAbout + '</li><li id="ixedit-showImport">' + label.utilityImport + '</li><li id="ixedit-showExport">' + label.utilityExport + '</li><li id="ixedit-showDeploy">' + label.utilityDeploy + '</li><li id="ixedit-showJson" style="display: none;">' + label.utilityShowJson + '</li><li id="ixedit-showDb">' + label.utilityShowDb + '</li><li id="ixedit-discardDb">' + label.utilityDiscardDb + '</li></ul></div><p><span id="ixedit-utilitynoofitems">0</span> , <span id="ixedit-utilitynoofselected">0</span></p></div>').prependTo(jQuery('#ixedit-ui'));
 	jQuery('<div id="ixedit-wrapper"></div>').appendTo(jQuery('body'));
+
 };
 
 // Generate the Main Dialog.
@@ -5307,48 +5344,6 @@ ixedit.generateDialogMain = function(){
 				ixedit.positDialogMain();
 
 				theDialog.draggable('option', 'containment', '#ixedit-wrapper').draggable('option', 'scroll', false);
-
-				jQuery(window).scroll(function(){
-							/*
-							// Realtime view update while scrolling.
-							// This is weird with Firefox and IE.
-							var scrollTop = jQuery(window).scrollTop();
-							var scrollLeft = jQuery(window).scrollLeft();
-							var gapX = scrollLeft - ixedit.prevScrollLeft;
-							var gapY = scrollTop - ixedit.prevScrollTop;
-							var position = dialog.position();
-							var newLeft = position.left + gapX;
-							var newTop = position.top + gapY;
-							dialog.css('left', newLeft).css('top', newTop);
-							ixedit.prevScrollLeft = scrollLeft;
-							ixedit.prevScrollTop = scrollTop;
-							ixedit.updatePositionPrefs(); // Update position prefs.
-							*/
-
-					// Hide dialog while window-scrolling
-					var dialog = jQuery('#ixedit-dialog-main');
-					var scrollTop = jQuery(window).scrollTop(); // Get scroll position
-					var scrollLeft = jQuery(window).scrollLeft(); // Get scroll position
-					if(scrollTop != ixedit.prevScrollTop || scrollLeft != ixedit.prevScrollLeft){ // Check if really scrolling (for Safari 3.x)
-						if(dialog.is(':visible')){ // If the dialog visible
-							dialog.fadeOut(150); // hide
-						};
-						if(ixedit.showingTimer){ // If the timer is running
-							clearTimeout(ixedit.showingTimer); // Stop it
-						};
-						ixedit.showingTimer = setTimeout(function(){ // Set the timer to reveal dialog
-							if(jQuery('#ixedit-xrayguidebox') && jQuery('#ixedit-xrayguidebox').is(':visible')){
-								// Do nothing.
-							}else{
-								ixedit.positDialogMain();
-								dialog.fadeIn(150);
-								ixedit.updatePositionPrefs(); // Update position prefs.
-							}
-						}, 250);
-					};
-					ixedit.prevScrollLeft = scrollLeft; // record current scroll position for the next scroll event
-					ixedit.prevScrollTop = scrollTop; // record current scroll position for the next scroll event
-				});
 
 				// Bind titlebar double-clicking.
 				ixeditTitlebar.dblclick(function(){
@@ -5559,16 +5554,9 @@ ixedit.generateDialogMain = function(){
 
 				ixedit.fixDialogDrag(); // For IE Bug Fix
 
-				// Update position prefs
-				ixedit.updatePositionPrefs();
-
 				//ixedit.updatePrefsData(); // Save DB.
 			}
 	});
-
-
-
-
 };
 
 
@@ -5641,7 +5629,6 @@ Array.prototype.ixeditSortByNumber = function() {
 		return (parseInt(a) > parseInt(b)) ? 1 : -1;
 	});
 };
-
 
 
 // VERY FIRST INITIALIZATION
