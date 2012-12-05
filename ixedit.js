@@ -5223,7 +5223,7 @@ ixedit.makeDialogBase = function(){
 
 	jQuery('<div id="ixedit-ui" title="IxEdit"><div id="ixedit-inputbox">'
 			+'<div id="ixedit-element">'
-				+ '<table id="ixedit-elementtitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + 'Element'/* TODO: trans*/ + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
+				+ '<table id="ixedit-elementtitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-element">' + 'Element'/* TODO: trans*/ + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
 				+ '<div id="ixedit-elementitems"></div>'
 			+ '</div>'
 			+'<div id="ixedit-basic">'
@@ -5395,8 +5395,18 @@ ixedit.generateDialogMain = function(){
 				disclosingTargets[3] = new Object();
 				disclosingTargets[3].wrapper = jQuery('#ixedit-cmnt');
 				disclosingTargets[3].container = jQuery('#ixedit-commentitems');
-
+				disclosingTargets[4] = new Object();
+				disclosingTargets[4].wrapper = jQuery('#ixedit-element');
+				disclosingTargets[4].container = jQuery('#ixedit-elementitems');
 				// Click title
+				jQuery('#ixedit-elementtitle').click(function(){
+					var theWrapper = disclosingTargets[4].wrapper;
+					var theContainer = disclosingTargets[4].container;
+					ixedit.areaGimmick(4, ixeditUi, theWrapper, theContainer);
+				});
+				var elementTitle = jQuery('#ixedit-elementtitle');
+				elementTitle.mousedown(function(){jQuery('tr', elementTitle).addClass('ixedit-pushed')}).mouseup(function(){jQuery('tr', elementTitle).removeClass('ixedit-pushed')}).mouseout(function(){jQuery('tr', elementTitle).removeClass('ixedit-pushed')});
+
 				jQuery('#ixedit-basictitle').click(function(){
 					var theWrapper = disclosingTargets[0].wrapper;
 					var theContainer = disclosingTargets[0].container;
