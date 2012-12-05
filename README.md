@@ -15,10 +15,9 @@ IxEdit is a JavaScript-based interaction design tool for the web. With IxEdit, d
 
 Enter ixedit project folder:
 
-    <script type="text/javascript" src="jquery/jquery-plus-jquery-ui.js"></script>`
-    <script type="text/javascript" src="ixedit.js"></script>`
-    <link type="text/css" rel="stylesheet" charset="utf-8" href="ixedit.css">`
-    <link type="text/css" rel="stylesheet" charset="utf-8" href="ui-sui.css">`
+    <script type="text/javascript" src="jquery/jquery-plus-jquery-ui.js"></script>
+    <script type="text/javascript" src="ixedit.js"></script>
+    <link type="text/css" rel="stylesheet" charset="utf-8" href="ixedit.css">
     
 #### Online
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>

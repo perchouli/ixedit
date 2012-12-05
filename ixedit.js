@@ -4190,19 +4190,16 @@ ixedit.appendElementInputs = function (targetObj, name, active, trigger, event, 
 
 	var label = ixedit.label;
 	var elementHTML = new Array();
-	elementHTML[elementHTML.length] = '<div class="ixedit-basicinputs"><table><tr><td class="ixedit-basicdetails">';
+	elementHTML[elementHTML.length] = '<div class="ixedit-elementinputs"><table><tr><td class="ixedit-elementdetails">';
 
-	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-event"><tr><td class="ixedit-labelarea-event ixedit-labelarea-default"><label>' + label.inputLabelEvent + '</label></td><td class="ixedit-inputarea-event ixedit-inputarea-xlarge">';
-	elementHTML[elementHTML.length] = '<select id="ixedit-event" onchange="ixedit.showHideTriggers(jQuery(this), ixedit.gimmickAnimation)">';
-	elementHTML[elementHTML.length] = ixedit.evtMenuSource; // Source of event menu.
-	elementHTML[elementHTML.length] = '</select>';
+	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-trigger"><tr><td class="ixedit-labelarea-trigger ixedit-labelarea-default"><label>' + label.inputLabelElement + '</label></td><td class="ixedit-inputarea-trigger"><input type="text" id="ixedit-element-target" /></td><td class="ixedit-inputarea-xray"><button class="ixedit-xraybtn" onclick="ixedit.xRay.startXRay(jQuery(\'#ixedit-element-target\'))" title="' + label.tipXRayBtn + '">&nbsp;</button></td></tr></table>';
+
+	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-event"><tr><td class="ixedit-labelarea-event ixedit-labelarea-default"><label>HTML</label></td><td class="ixedit-inputarea-event ixedit-inputarea-xxlarge">';
+	elementHTML[elementHTML.length] = '<textarea id="ixedit-html" style="margin-bottom:10px;" placeholder="Input zen coding abbreviation and press Ctrl+E expand it"></textarea><button type="button" id="ixedit-button-render" style="display: inline-block; " class="" onclick="ixedit.renderHTML()">Render</button>';
 	elementHTML[elementHTML.length] = '</td><td style="padding: 0 !important">';
 	// For Future Key Press Feature	
 	// elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-key"><tr><td class="ixedit-labelarea-xsmall">Key</td><td class="ixedit-inputarea-xsmall"><input type="text" id="ixedit-key" onfocus="this.select()" value="' + key + '" /></td><td>&nbsp;</td></tr></table>';
 	elementHTML[elementHTML.length] = '</td></tr></table>';
-
-	elementHTML[elementHTML.length] = '<table class="ixedit-triggerarea-trigger"><tr><td class="ixedit-labelarea-trigger ixedit-labelarea-default"><label>' + label.inputLabelElement + '</label></td><td class="ixedit-inputarea-trigger"><input type="text" id="ixedit-trigger" /></td><td class="ixedit-inputarea-xray"><button class="ixedit-xraybtn" onclick="ixedit.xRay.startXRay(jQuery(\'#ixedit-trigger\'))" title="' + label.tipXRayBtn + '">&nbsp;</button></td></tr></table>';
-
 
 	elementHTML[elementHTML.length] = '</td>';
 	elementHTML[elementHTML.length] = '<td class="ixedit-tinybtnarea">&nbsp;</td>';
@@ -4211,7 +4208,7 @@ ixedit.appendElementInputs = function (targetObj, name, active, trigger, event, 
 
 	jQuery('#ixedit-trigger').val(trigger);
 
-	jQuery('.ixedit-xraybtn', jQuery('.ixedit-basicdetails')).mousedown(function(){jQuery(this).addClass('ixedit-xraybtn-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-xraybtn-pushed')});
+	jQuery('.ixedit-xraybtn', jQuery('.ixedit-elementdetails')).mousedown(function(){jQuery(this).addClass('ixedit-xraybtn-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-xraybtn-pushed')});
 	
 	var theEventSelector = jQuery('#ixedit-event', targetObj);
 	this.selectOne(theEventSelector, event);
@@ -4705,7 +4702,6 @@ ixedit.refreshIxInputBox = function(ixObj){
 	jQuery('#ixedit-actionitems').empty(); // Clear
 	jQuery('#ixedit-conditionitems').empty(); // Clear
 	jQuery('#ixedit-commentitems').empty(); // Clear
-	console.log(ixObj.name)
 	this.appendElementInputs(jQuery('#ixedit-elementitems'), ixObj.name, ixObj.active, ixObj.trigger, ixObj.event, ixObj.preventDefault, ixObj.stopBubbling, false); // Basic inputs
 
 	this.appendBasicInputs(jQuery('#ixedit-basicitems'), ixObj.name, ixObj.active, ixObj.trigger, ixObj.event, ixObj.preventDefault, ixObj.stopBubbling, false); // Basic inputs
@@ -4922,7 +4918,12 @@ ixedit.arrayToOptions = function(theArray){
 	return theHTML.join('');
 };
 
-
+ixedit.renderHTML = function(){
+	var selectedElement = jQuery.trim(jQuery('#ixedit-element-target').val());
+	var customHTML = jQuery('textarea#ixedit-html').val();
+	var protectElementArray = ['body', 'html', 'div'];
+	jQuery(selectedElement).html(customHTML);
+};
 
 
 // --- X-Ray 
@@ -5222,7 +5223,7 @@ ixedit.makeDialogBase = function(){
 
 	jQuery('<div id="ixedit-ui" title="IxEdit"><div id="ixedit-inputbox">'
 			+'<div id="ixedit-element">'
-				+ '<table id="ixedit-elementtitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + 'Elements'/* TODO: trans*/ + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
+				+ '<table id="ixedit-elementtitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + 'Element'/* TODO: trans*/ + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table>'
 				+ '<div id="ixedit-elementitems"></div>'
 			+ '</div>'
 			+'<div id="ixedit-basic">'
@@ -5395,7 +5396,7 @@ ixedit.generateDialogMain = function(){
 				disclosingTargets[3].wrapper = jQuery('#ixedit-cmnt');
 				disclosingTargets[3].container = jQuery('#ixedit-commentitems');
 
-
+				// Click title
 				jQuery('#ixedit-basictitle').click(function(){
 					var theWrapper = disclosingTargets[0].wrapper;
 					var theContainer = disclosingTargets[0].container;

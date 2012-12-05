@@ -277,7 +277,7 @@
 	margin: 0 !important;
 }
 
-.ixedit-dialog .ui-dialog-buttonpane button {
+#ixedit-button-render,.ixedit-dialog .ui-dialog-buttonpane button {
 	width: auto;
 	margin: 0 3px !important;
 	-webkit-border-radius: 9px !important;
@@ -552,6 +552,7 @@
 }
 
 
+.ixedit-dialog td.ixedit-elementdetails, 
 .ixedit-dialog td.ixedit-basicdetails, 
 .ixedit-dialog td.ixedit-actiondetails, 
 .ixedit-dialog td.ixedit-conditiondetails {
@@ -562,6 +563,7 @@
 	padding: 0 !important;
 }
 
+.ixedit-dialog td.ixedit-elementdetails table, 
 .ixedit-dialog td.ixedit-basicdetails table, 
 .ixedit-dialog td.ixedit-actiondetails table, 
 .ixedit-dialog td.ixedit-conditiondetails table,
@@ -574,6 +576,7 @@
 }
 
 
+.ixedit-dialog td.ixedit-elementdetails table td, 
 .ixedit-dialog td.ixedit-basicdetails table td, 
 .ixedit-dialog td.ixedit-actiondetails table td, 
 .ixedit-dialog td.ixedit-conditiondetails table td,
@@ -610,6 +613,7 @@
 	background-image: url(images/bg-textbox.png);
 	background-repeat: repeat-x;
 	background-position: left -1px;
+	margin-bottom: 0px;
 }
 
 .ixedit-dialog select {
