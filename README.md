@@ -8,6 +8,7 @@ IxEdit is a JavaScript-based interaction design tool for the web. With IxEdit, d
 - Firefox 12.0+
 - IE8+
 - Chrome 19.0.1084.46+
+- Safari 6.0.3+
 
 ### Install
 
@@ -15,7 +16,8 @@ IxEdit is a JavaScript-based interaction design tool for the web. With IxEdit, d
 
 Enter ixedit project folder:
 
-    <script type="text/javascript" src="jquery/jquery-plus-jquery-ui.js"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="ixedit.js"></script>
     <link type="text/css" rel="stylesheet" charset="utf-8" href="ixedit.css">
     
