@@ -1,7 +1,7 @@
 /* ==================== IXEDIT ==================== */
 
 /*!
- * IxEdit v1.01Alpha
+ * IxEdit v1.02Alpha
  * https://github.com/perchouli/ixedit
  *
  * Created by Sociomedia Inc.
@@ -751,14 +751,6 @@ ixedit.dbName = "ixedit-database"; // DB name
 ixedit.applicationName = "application1"; // Table name for common data.
 ixedit.projectName = "project1"; // Table name for Ix records.
 ixedit.screenID = ''; // Temporary record name (screenid column).
-
-
-
-if(jQuery.browser.msie && parseInt(jQuery.browser.version.substr(0,3))<8){ // Under IE8?
-	ixedit.isOldIE = true;
-}else{
-	ixedit.isOldIE = false;
-};
 
 ixedit.addingNewIx = false; // Now creating a new interaction?
 ixedit.gimmickAnimation = false; // Allow gimmick animations?
@@ -3491,9 +3483,6 @@ ixedit.showAbout = function(){
 			open:
 				function(){
 					var aboutDialog = jQuery('.ixedit-dialog-about');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						aboutDialog.addClass('ixedit-msie-old');
-					};
 					var buttons = jQuery('button', aboutDialog);
 					// Button effects.
 					buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
@@ -3533,9 +3522,6 @@ ixedit.showDeploy = function(){
 				function(){
 					ixedit.refreshDeployDialog();
 					var deployDialog = jQuery('.ixedit-dialog-deploy');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						deployDialog.addClass('ixedit-msie-old');
-					};
 					var buttons = jQuery('button', deployDialog);
 					// Button effects
 					buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
@@ -3585,9 +3571,6 @@ ixedit.showExport = function(){
 				function(){
 					ixedit.refreshExportDialog();
 					var exportDialog = jQuery('.ixedit-dialog-export');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						exportDialog.addClass('ixedit-msie-old');
-					};
 					var buttons = jQuery('button', exportDialog);
 					// Button effects
 					buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
@@ -3667,9 +3650,6 @@ ixedit.showImport = function(){
 			open:
 				function(){
 					var importDialog = jQuery('.ixedit-dialog-import');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						importDialog.addClass('ixedit-msie-old');
-					};
 					var buttons = jQuery('button', importDialog);
 					// Button effects.
 					buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
@@ -3735,9 +3715,6 @@ ixedit.showDB = function(){
 				function(){
 					ixedit.showDBData(jQuery(this));
 					var dbDialog = jQuery('.ixedit-dialog-db');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						dbDialog.addClass('ixedit-msie-old');
-					};
 					var buttons = jQuery('button', dbDialog);
 					// Button effects.
 					buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
@@ -3776,9 +3753,6 @@ ixedit.showCommadHelp = function(commandName){
 			open:
 				function(){
 					var commandhelpDialog = jQuery('.ixedit-dialog-commandhelp');
-					if(ixedit.isOldIE){ // Add special class when user using IE7.
-						commandhelpDialog.addClass('ixedit-msie-old');
-					};
 					jQuery('.ixedit-instruction-content', commandhelpDialog).html(ixedit.cmds[commandName].help);
 					var buttons = jQuery('button', commandhelpDialog);
 					// Button effects.
@@ -5036,7 +5010,7 @@ ixedit.xRay.endXRay = function(){
 	this.avoiding = false;
 
 	jQuery(window).unbind('keydown', ixedit.xRay.bindEsc); // Unbind Esc function.
-	ixedit.positDialogMain(); // Post dialog
+	//FIXME: ixedit.positDialogMain(); // Post dialog
 	jQuery('#ixedit-wrapper').show();
 	jQuery('#ixedit-dialog-main').show();
 	jQuery('#ixedit-ui').scrollTop(ixedit.xRay.dialogScrollTop); // For Safari bug
@@ -5105,9 +5079,6 @@ ixedit.xRay.startXRay = function(targetSelectorBox){
 	var selectorBox = jQuery('<div id="ixedit-xrayselectorbox" class="ixedit-dialog"><div id="ixedit-selectorcontent"><ul id="ixedit-selectormenu"></ul></div><div id="ixedit-selectorarrow">&nbsp;</div></div>');
 	var theX = jQuery('<div id="ixedit-xrayedbox">&nbsp;</div>');
 	var guideBox = jQuery('<div id="ixedit-xrayguidebox"><p>' + ixedit.label.instructionXRay1 + ' <button class="ixedit-xraycancel" onclick="ixedit.xRay.endXRay(); return false;" title="' + ixedit.label.cancel +  '">&nbsp;</button></p></div>');
-	if(ixedit.isOldIE){ // Add special class when user using IE7.
-		guideBox.addClass('ixedit-msie-old');
-	};
 
 	var pageWidth = jQuery('html').innerWidth();
 
@@ -5300,39 +5271,13 @@ ixedit.generateDialogMain = function(){
 				var ixeditButtonPane = jQuery('.ui-dialog-buttonpane', theDialog);
 				var buttons = jQuery('button', ixeditButtonPane);
 
-				if(ixedit.isOldIE){ // Add special class when user using IE7.
-					theDialog.addClass('ixedit-msie-old');
-				};
-
 				// Positioning. Using .position command doesnt work well for Safari when scrolled and reloaded, so use css.
 				ixedit.positDialogMain();
 
 				theDialog.draggable('option', 'containment', '#ixedit-wrapper').draggable('option', 'scroll', false);
 
 				jQuery(window).scroll(function(){
-					// Hide dialog while window-scrolling
-					var dialog = jQuery('#ixedit-dialog-main');
-					var scrollTop = jQuery(window).scrollTop(); // Get scroll position
-					var scrollLeft = jQuery(window).scrollLeft(); // Get scroll position
-					if(scrollTop != ixedit.prevScrollTop || scrollLeft != ixedit.prevScrollLeft){ // Check if really scrolling (for Safari 3.x)
-						if(dialog.is(':visible')){ // If the dialog visible
-							dialog.fadeOut(150); // hide
-						};
-						if(ixedit.showingTimer){ // If the timer is running
-							clearTimeout(ixedit.showingTimer); // Stop it
-						};
-						ixedit.showingTimer = setTimeout(function(){ // Set the timer to reveal dialog
-							if(jQuery('#ixedit-xrayguidebox') && jQuery('#ixedit-xrayguidebox').is(':visible')){
-								// Do nothing.
-							}else{
-								ixedit.positDialogMain();
-								dialog.fadeIn(150);
-								ixedit.updatePositionPrefs(); // Update position prefs.
-							}
-						}, 250);
-					};
-					ixedit.prevScrollLeft = scrollLeft; // record current scroll position for the next scroll event
-					ixedit.prevScrollTop = scrollTop; // record current scroll position for the next scroll event
+					// TODO
 				});
 
 				// Bind titlebar double-clicking.
@@ -5526,18 +5471,6 @@ ixedit.generateDialogMain = function(){
 			function(){
 				ixedit.fixDialogDrag(); // For IE Bug Fix
 				var ixeditDialogMain = jQuery('#ixedit-dialog-main');
-
-/*
-				//For Safari, this works. For Firefox not.
-				var offset = ixeditDialogMain.offset();
-				var sT = jQuery(window).scrollTop();
-				var newTopVal = offset.top + sT;
-				ixeditDialogMain.css('position', 'absolute');
-				ixeditDialogMain.css('top', newTopVal);
-*/
-
-
-
 			},
 		dragStop:
 			function(){
@@ -5550,9 +5483,6 @@ ixedit.generateDialogMain = function(){
 				//ixedit.updatePrefsData(); // Save DB.
 			}
 	});
-
-
-
 
 };
 

@@ -293,9 +293,6 @@
 	text-shadow: none;
 }
 
-.ixedit-msie-old .ui-dialog-buttonpane button {
-	/* padding: 0 6px !important; */
-}
 .ixedit-dialog .ui-dialog-buttonpane button.ixedit-pushed {
 	background-position: left -30px !important;
 	color: #999999 !important;
