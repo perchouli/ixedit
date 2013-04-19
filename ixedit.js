@@ -113,7 +113,7 @@ ixedit.lang = {
 		'inputHeaderStatusItems':'组项目',
 		'inputHeaderStatusNone':'暂无',
 		'inputHeaderStatusCommented':'注释',
-		'inputLabelElement':'对象选择符',
+		'inputLabelElement':'对象选择器',
 		'inputLabelEvent':'事件',
 		'inputLabelPreventDefault':'阻止默认行为',
 		'inputLabelStopBubbling':'阻止事件冒泡',
@@ -220,10 +220,10 @@ ixedit.lang = {
 		'condTypeIfNot':'不匹配',
 		'of':'',
 		'listHeaderCheck':' ',
-		'listHeaderEvent':'动作事件',
-		'listHeaderTrigger':'动作元素选择符',
-		'listHeaderTarget':'反馈元素选择符',
-		'listHeaderCommand':'反馈元素命令',
+		'listHeaderEvent':'事件',
+		'listHeaderTrigger':'触发选择器',
+		'listHeaderTarget':'响应选择器',
+		'listHeaderCommand':'响应动作',
 		'listHeaderComment':'备注',
 		'utilityAbout':'关于 ' + ixedit.appName,
 		'utilityDeploy':'导出js代码',
@@ -249,9 +249,12 @@ ixedit.lang = {
 		'instructionDeploy':'<h2>To embed the generated JavaScript code to your HTML</h2><ol><li>Copy the following JavaScript code.</li><li>Open your HTML file with a text editor.</li><li>Paste the code to very bottom of inside the &lt;head&gt; element.</li><li>Delete the line which is loading IxEdit script file like &lt;script type="text/javascript" src="yourpath/ixedit.js"&gt;&lt;/script&gt;.</li><li>Delete the line which is loading IxEdit CSS file like &lt;link type="text/css" href="yourpath/ixedit.css" rel="stylesheet"&gt; also.</li><li>Save the HTML file and reload it with a browser.</li></ol>',
 		'instructionImport':'<h2>To import data from another IxEdit-editing page</h2><ol><li>Copy the data in the Exporting dialog from the page you want to import from.</li><li>Paste the data into the following text area.</li><li>Hit the Import button.</li></ol>',
 		'instructionExport':'<h2>To export the data to another IxEdit-editing page</h2><ol><li>Copy the following data.</li><li>Go to the IxEdit-editing browser window you want to import to.</li><li>Open Import dialog and paste the data.</li></ol>',
+		'importSelectorLabel':'Import by : ',
+		'importSelectorOptionLabel0':'Copy-Pasting',
+		'importSelectorOptionLabel1':'Choose from existing data',
 		'tipRouteBtn':'导入/导出/部署',
-		'tipXRayBtn':'点击页面元素以选择对象元素选择符',
-		'instructionXRay1':'点击目标元素以指定对象选择符',
+		'tipXRayBtn':'点击页面元素以选择对象元素选择器',
+		'instructionXRay1':'点击目标元素以指定对象选择器',
 		'cancel':'取消',
 		'unloadingCaution':'你已经通过IxEdit改变了一些数据，它们尚未保存，如果你关闭/离开/刷新浏览器，改变的数据将丢失。\n\n如果你想保存它们，请先点击取消，然后点击"保存"按钮',
 		'dayNamesMinSu':'日',
@@ -1280,7 +1283,9 @@ ixedit.ix.prototype.retrieveCondition = function(isLive){
 		if(cTarget=='this'){
 			var targetString = 'jQuery(event.' + targetStr + ')';
 		}else if(cTarget=='drop'){
-			targetString='ui.draggable';
+			var targetString='ui.draggable';
+		}else if(cTarget.substr(0,6)=='event.'){
+			var targetString=cTarget;
 		}else{
 			var targetString = 'jQuery(\'' + cTarget + '\')';
 		};
@@ -1298,7 +1303,6 @@ ixedit.ix.prototype.retrieveCondition = function(isLive){
 			builtConds = builtConds + ' && ' + currentCond;
 		};
 	};
-
 	return builtConds;
 };
 
@@ -2676,7 +2680,12 @@ ixedit.preAssignCondCmds = function(){
 	newCondCmd.screenName = label.condCmdSNAttr;
 	newCondCmd.attrs = [['<table><tr><td class="ixedit-labelarea-attributename ixedit-labelarea-default">' + label.inputLabelValue + '</td><td class="ixedit-inputarea-valuevalue">', '', '</td></tr></table>']];
 	newCondCmd.funcStr = function(target, attributeArray, equation){
-		var conditionString = target + '.val() ' + equation + ' \'' + attributeArray[0] + '\'';
+		if (target.substr(0,6)=='event.'){
+			var conditionString = target + equation + attributeArray[0].toString();
+		}
+		else{
+			var conditionString = target + '.val() ' + equation + ' \'' + attributeArray[0] + '\'';
+		}
 		return conditionString;
 	};
 	condcmds.val = newCondCmd;
@@ -2768,7 +2777,7 @@ ixedit.jsonToIxs = function(theArray){
 // Load Ix JSON from string.
 ixedit.loadIxJSONString = function(theString){
 	if(theString !== ''){ // If there is JSON text of loaded data.
-		var loadedObject = this.JSON.parse(theString);
+		var loadedObject = JSON.parse(theString);
 
 		if(loadedObject.format == this.format){ // If the data format matches.
 			var ixAtts = loadedObject.data; // Decode the JSON data and put it into the array temporarily
@@ -3795,7 +3804,7 @@ ixedit.encodeIxsJSON = function(ixsArray){
 	var savingDataObject = new Object();
 	savingDataObject.format = this.format;
 	savingDataObject.data = newJSON;
-	return this.JSON.stringify(savingDataObject);
+	return JSON.stringify(savingDataObject);
 };
 
 
@@ -3994,7 +4003,7 @@ ixedit.duplicate = function() {
 	};
 	this.prefs.selectedLineNo = selectedLineNos; // Update selectedLineNo.
 
-	this.refreshList(); // Refresh list.
+	this.refreshList(true); // Refresh list.
 	ixedit.refreshListButtonStates();
 	this.showSelectedItem();
 
@@ -4039,7 +4048,7 @@ ixedit.save = function(){
 
 	this.prefs.selectedLineNo[0] = this.getListItemNo(targetIxNo); // Update selectedLineNo
 
-	this.refreshList(); // Refresh list.
+	this.refreshList(true); // Refresh list.
 
 	ixedit.refreshListButtonStates();
 	this.showSelectedItem();
@@ -4080,7 +4089,6 @@ ixedit.saveCon = function(isWithSet){ // Argument is if realtime binding is need
 			this.ixs[targetIxNo].set(); // Bind new ix.
 		}
 	};
-
 	// Dont update the list.
 	// Dont save DB.
 
@@ -4089,14 +4097,21 @@ ixedit.saveCon = function(isWithSet){ // Argument is if realtime binding is need
 
 //Import ixs
 ixedit.importData = function(dataText){ // Argument is importing JSON string.
-	var theData = unescape(dataText); // Unescape.
+	var theData = dataText;
 	if(this.ixs.length>0){
 		this.ixs.unsetAll(); // Unbind all ixs.
 	};
 
 	this.loadIxJSONString(theData); // Convert JSON to ixs.
+	this.ixs.setAll();
+	this.prepareList();
+	this.refreshList(true);
+	ixedit.refreshListButtonStates();
+	if(this.ixs.length > 0){
+		this.showSelectedItem();
+	};
 
-
+	this.showIxlist();
 };
 
 
@@ -4128,7 +4143,6 @@ ixedit.checkCommentInclusion = function(theCheckbox){
 // Update export dialog.
 ixedit.refreshExportDialog = function(){
 	var dataText = this.encodeIxsJSON(this.ixs);
-	dataText = escape(dataText);
 	jQuery('.ixedit-exportingtext').val(dataText);
 };
 
@@ -4151,7 +4165,7 @@ ixedit.deleteIx = function(targetIxNos){ // Argument is the array of target ix
 
 	this.prepareList();
 
-	this.refreshList(); // Refresh the list.
+	this.refreshList(true); // Refresh the list.
 	ixedit.refreshListButtonStates();
 
 
@@ -5213,7 +5227,7 @@ ixedit.generateDialogMain = function(){
 				ixedit.showIxlist(); // This is needed to enable/disable buttons
 			},
 			"3": function() { // Reload
-				//ixedit.updatePrefsDataAndReload();
+				// ixedit.updatePrefsDataAndReload();
 			},
 			"4": function() { // Edit
 				if(ixedit.prefs.selectedLineNo.length>0){
