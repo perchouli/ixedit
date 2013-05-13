@@ -1021,7 +1021,7 @@ ixedit.ix.prototype.set = function(){
 	if(theEvent=='load') {
 		var chainMiddle0 = '';
 	} else if(theTrigger == 'window' || theTrigger == 'html' || theTrigger == 'body' || jQuery(theTrigger, theLostWorld).length > 0){ // If initial DOM has the trigger.
-		var chainMiddle0 = '.bind(\'' + theEvent + '\', '; // Use bind.
+		var chainMiddle0 = '.on(\'' + theEvent + '\', '; // Use bind.
 	} else { // else
 		var chainMiddle0 = '.live(\'' + theEvent + '\', '; // User live.
 		var isLive = true;
@@ -1031,7 +1031,7 @@ ixedit.ix.prototype.set = function(){
 	if(theEvent=='load') {
 		var chainMiddle1 = '';
 	} else if(theTrigger == 'window' || theTrigger == 'html' || theTrigger == 'body' || jQuery(theTrigger, theLostWorld).length > 0){  // If initial DOM has the trigger.
-		var chainMiddle1 = '.bind(\'' + theEvent + '\', function(event, ui){'; // Use bind.
+		var chainMiddle1 = '.on(\'' + theEvent + '\', function(event, ui){'; // Use bind.
 	} else { // else
 		var chainMiddle1 = '.live(\'' + theEvent + '\', function(event, ui){'; // User live.
 	};
@@ -1109,7 +1109,7 @@ ixedit.ix.prototype.set = function(){
 	if(this.active){ // If this ix is active.
 		// Generate code for realtime binding as text string.
 		var finalString0 = chainPrefix0 + chainMiddle0 + 'this.func' + chainMiddle3 + chainSuffix;
-		// e.g. jQuery('#box1').bind('click', this.funcs[0]);
+		// e.g. jQuery('#box1').on('click', this.funcs[0]);
 	};
 
 	// Generate code for deploying as text string.
@@ -1160,7 +1160,7 @@ When you have one or more script using live, using die for a script which has a 
 	thisTrigger = thisTrigger.replace(/ \+/g,'\+'); // ' +' to '+'
 	thisTrigger = thisTrigger.replace(/\+ /g,'\+');  // '+ ' to '+'
 
-	jQuery(thisTrigger).unbind(thisEvent, thisFunc);
+	jQuery(thisTrigger).off(thisEvent, thisFunc);
 	jQuery(thisTrigger).die(thisEvent, thisFunc);
 	if(this.code && this.code.source){
 		this.code.source = '// ' + this.code.source;	
@@ -2445,7 +2445,7 @@ ixedit.preAssignCmds = function(){
 		}else{
 			theSP.hide();
 		};
-		theBtnCB.bind('change', function(){
+		theBtnCB.on('change', function(){
 			var theSP = jQuery('.subparam', theTarget);
 			if($(this).is(':checked')){
 				theSP.show();
@@ -4568,7 +4568,7 @@ ixedit.showHideAttrs2 = function(actionNo, isWithEffect){
 	this.realtimeBind(theWrapper); // Binding within the added area for realtime binding.
 
 	var buttons = jQuery('.ixedit-commandhelp', theTarget);
-	buttons.unbind('click'); // Unbind command help.
+	buttons.off('click'); // Unbind command help.
 	buttons.click(function(){ixedit.showCommadHelp(theCommandValue)}); // Bind command help again.
 
 	// Kick the special function from the cmd instance.
@@ -4745,7 +4745,7 @@ ixedit.refreshIxInputBox = function(ixObj){
 		};
 	};
 	updateCommentStatus();
-	jQuery('#ixedit-commentitems').bind('change', updateCommentStatus);
+	jQuery('#ixedit-commentitems').on('change', updateCommentStatus);
 
 	// Binding for realtime binding.
 	var targetArea = jQuery('#ixedit-inputbox');
@@ -4906,7 +4906,7 @@ ixedit.xRay.xRayedElement = jQuery('<rosetta></rosetta>');
 ixedit.xRay.theSelectors = new Array(); // Selector candidates array.
 ixedit.xRay.targetSelectorBox = jQuery('<rosetta></rosetta>');
 ixedit.xRay.avoiding = false;
-ixedit.xRay.bindEsc = function(event){
+ixedit.xRay.onEsc = function(event){
 	if(jQuery('#ixedit-xrayguidebox').is(':visible') && event.keyCode == jQuery.ui.keyCode.ESCAPE){
 		ixedit.xRay.endXRay();
 	};
@@ -5014,15 +5014,15 @@ ixedit.xRay.endXRay = function(){
 	xRayTargets = this.getXRayTargets();
 
 	// Unbind all functions bound by startXRay.
-	xRayTargets.unbind('mousedown', this.xRayMouseDown);
-	xRayTargets.unbind('mouseover', this.returningFalse);
-	xRayTargets.unbind('mousemove', this.fadingOut);
-	xRayTargets.unbind('mouseenter', this.returningFalse);
-	xRayTargets.unbind('mouseout', this.returningFalse);
-	xRayTargets.unbind('mouseleave', this.returningFalse);
-	xRayTargets.unbind('click', this.returningFalse);
-	xRayTargets.unbind('mouseover', this.cursorDefault);
-	jQuery('#ixedit-xrayedbox').unbind('mousedown', this.returningFalse);
+	xRayTargets.off('mousedown', this.xRayMouseDown);
+	xRayTargets.off('mouseover', this.returningFalse);
+	xRayTargets.off('mousemove', this.fadingOut);
+	xRayTargets.off('mouseenter', this.returningFalse);
+	xRayTargets.off('mouseout', this.returningFalse);
+	xRayTargets.off('mouseleave', this.returningFalse);
+	xRayTargets.off('click', this.returningFalse);
+	xRayTargets.off('mouseover', this.cursorDefault);
+	jQuery('#ixedit-xrayedbox').off('mousedown', this.returningFalse);
 
 	jQuery('#ixedit-xrayselectorbox').remove(); // Remove xrayselectorbox.
 	jQuery('#ixedit-xrayedbox').remove(); // Remove xrayedbox
@@ -5030,7 +5030,7 @@ ixedit.xRay.endXRay = function(){
 
 	this.avoiding = false;
 
-	jQuery(window).unbind('keydown', ixedit.xRay.bindEsc); // Unbind Esc function.
+	jQuery(window).off('keydown', ixedit.xRay.onEsc); // Unbind Esc function.
 	//FIXME: ixedit.positDialogMain(); // Post dialog
 	jQuery('#ixedit-wrapper').show();
 	jQuery('#ixedit-dialog-main').show();
@@ -5093,7 +5093,7 @@ ixedit.xRay.startXRay = function(targetSelectorBox){
 	jQuery('#ixedit-dialog-main').hide();
 	jQuery('#ixedit-wrapper').hide();
 
-	jQuery(window).bind('keydown', ixedit.xRay.bindEsc);
+	jQuery(window).on('keydown', ixedit.xRay.onEsc);
 
 	this.targetSelectorBox = targetSelectorBox;
 
@@ -5127,25 +5127,25 @@ ixedit.xRay.startXRay = function(targetSelectorBox){
 
 	var xRayTargets = this.getXRayTargets();
 
-	xRayTargets.bind('mousedown', this.xRayMouseDown);
-	xRayTargets.bind('mouseover', this.returningFalse);
-	xRayTargets.bind('mousemove', this.fadingOut);
-	xRayTargets.bind('mouseenter', this.returningFalse);
-	xRayTargets.bind('mouseout', this.returningFalse);
-	xRayTargets.bind('mouseleave', this.returningFalse);
-	//xRayTargets.bind('mouseup', this.returningFalse); // If you do this, you cannot stop dragging.
-	xRayTargets.bind('click', this.returningFalse);
-	xRayTargets.bind('mouseover', this.cursorDefault);
-	jQuery('#ixedit-xrayedbox').bind('mousedown', this.returningFalse);
+	xRayTargets.on('mousedown', this.xRayMouseDown);
+	xRayTargets.on('mouseover', this.returningFalse);
+	xRayTargets.on('mousemove', this.fadingOut);
+	xRayTargets.on('mouseenter', this.returningFalse);
+	xRayTargets.on('mouseout', this.returningFalse);
+	xRayTargets.on('mouseleave', this.returningFalse);
+	//xRayTargets.on('mouseup', this.returningFalse); // If you do this, you cannot stop dragging.
+	xRayTargets.on('click', this.returningFalse);
+	xRayTargets.on('mouseover', this.cursorDefault);
+	jQuery('#ixedit-xrayedbox').on('mousedown', this.returningFalse);
 	
-	guideBox.bind('mousedown', function(){
+	guideBox.on('mousedown', function(){
 		ixedit.xRay.avoiding = true;
 	});
-	guideBox.bind('mouseout', function(){
+	guideBox.on('mouseout', function(){
 		ixedit.xRay.avoiding = false;
 	});
 
-	jQuery('#ixedit-xraycancel').bind('mousedown', function(){return false});
+	jQuery('#ixedit-xraycancel').on('mousedown', function(){return false});
 };
 
 
@@ -5553,7 +5553,7 @@ jQuery(function(){
 		ixedit.initialize();
 		ixedit.makeDialogBase()
 		ixedit.generateDialogMain();
-	}
+	};
 });
 
 
