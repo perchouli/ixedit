@@ -1148,10 +1148,7 @@ ixedit.ix.prototype.unset = function(){
   var thisTrigger = this.trigger;
   var thisEvent = this.event;
 
-/*
-jQuery 1.3.2 bug?
-When you have one or more script using live, using die for a script which has a selector with the format of 'selector1 + selector2' causes an error. 'selector1+selector2' is OK.
-*/
+
   // So, about trigger, remove space(s) before and after '+.'
   // If that bug is fixed in the future, next 5 lines are not needed.
   thisTrigger = thisTrigger.replace(/   /g,' '); // 3 spaces to 1
@@ -1161,7 +1158,6 @@ When you have one or more script using live, using die for a script which has a 
   thisTrigger = thisTrigger.replace(/\+ /g,'\+');  // '+ ' to '+'
 
   jQuery(thisTrigger).off(thisEvent, thisFunc);
-  jQuery(thisTrigger).die(thisEvent, thisFunc);
   if(this.code && this.code.source){
     this.code.source = '// ' + this.code.source;  
   }
