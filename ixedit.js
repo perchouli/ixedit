@@ -770,6 +770,11 @@ ixedit.cmdMenuSource = '';
 ixedit.condCmdMenuSource = '';
 ixedit.embedSources = [];
 
+// ---------- IxEdit Other Properties as Object
+
+ixedit.localdbi = new Object();
+ixedit.dbi = ixedit.localdbi;
+
 
 // Common preferences defaults
 ixedit.commonPrefs = new Object();
@@ -4012,6 +4017,7 @@ ixedit.duplicate = function() {
 
 
 
+  this.updateFullData(); // Save DB
 
 };
 
@@ -4057,6 +4063,8 @@ ixedit.save = function(){
   this.showSelectedItem();
 
 
+
+  this.updateFullData(); // Save DB
 
 };
 
@@ -5203,7 +5211,7 @@ ixedit.generateDialogMain = function(){
         ixedit.showIxlist(); // This is needed to enable/disable buttons
       },
       "3": function() { // Reload
-        // ixedit.updatePrefsDataAndReload();
+        ixedit.updatePrefsDataAndReload();
       },
       "4": function() { // Edit
         if(ixedit.prefs.selectedLineNo.length>0){
@@ -5244,7 +5252,7 @@ ixedit.generateDialogMain = function(){
           ixedit.prefs.selectedLineNo.length = 1;
           ixedit.prefs.selectedLineNo[0] = ixedit.getListItemNo(targetIxNo); // update selectedLineNo.
         };
-        //ixedit.updateIxDataAndReload(); // Save DB and reload.
+        ixedit.updateIxDataAndReload(); // Save DB and reload.
       },
       "8": function() { // Done
         ixedit.save();
@@ -5470,10 +5478,36 @@ ixedit.generateDialogMain = function(){
 
 };
 
+// DB General Interfaces
+ixedit.updateFullData = function(){
+    var dbi = ixedit.dbi;
+    var db = dbi.dbInit(this.dbName);
+    dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs);
+    dbi.checkPageRecord(db, dbi.sqlUpdateIx);
+};
 
+ixedit.updatePrefsDataAndReload = function(){
+    var dbi = ixedit.dbi;
+    var db = dbi.dbInit(this.dbName);
+    dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
+        var dbi = ixedit.dbi;
+        dbi.checkPageRecord(db, dbi.sqlUpdateIxPrefs, function(){
+            window.location.reload();
+        });
+    });
+};
 
-
-
+// Save DB fully, then reload. ( This is for Done and Reload button. )
+ixedit.updateIxDataAndReload = function(){
+  var dbi = ixedit.dbi;
+  var db = dbi.dbInit(ixedit.dbName);
+  dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
+    var dbi = ixedit.dbi;
+    dbi.checkPageRecord(db, dbi.sqlUpdateIx, function(){
+      window.location.reload();
+    });
+  });
+};
 
 // Prepare IxEdit Dialog.
 ixedit.prepareEditor = function(){
@@ -5494,24 +5528,6 @@ ixedit.prepareEditor = function(){
     };
   };
 
-  /* Safari's local DB transaction is asynchronous. So you cannot use unload event to save. Its OK for Gears.
-  // Save when unloading.
-  jQuery(window).unload(function(){
-    var ixeditDialogMain = jQuery('#ixedit-dialog-main');
-    if(ixeditDialogMain.is(':visible')){
-      if(ixedit.ixs.length > 0){
-        ixedit.saveCon(false);
-        ixedit.prefs.selectedLineNo.ixeditSortByNumber();
-        ixedit.updateFullData();
-      } else {
-        ixedit.updatePrefsData();
-      }
-    } else {
-      
-    }
-  });
-  */
-
 };
 
 // Add Source to array
@@ -5520,6 +5536,170 @@ ixedit.addEmbedSource = function(source){
   embedSources[embedSources.length] = source;
 };
 
+// ********** Local Database Interfaces **********
+ixedit.localdbi.dbInit = function(dbName){
+    if(window.openDatabase){
+        if(ixedit.db){ // If ixedit.db is defined.
+            // Do nothing.
+        } else { // If not.
+            ixedit.db = openDatabase(dbName, '1.0', 'ixedit local database', 512000); // Define.
+        };
+        return ixedit.db;
+    } else {
+        window.alert('IxEdit Error: There is no local client-side database storage.');
+    };
+};
+ixedit.localdbi.checkCommonRecord = function(db, nextFunction, callbackFunction){
+
+    db.transaction(
+        function(tx) {
+            var sql = 'CREATE TABLE IF NOT EXISTS ' + ixedit.applicationName + ' (' + 'id integer primary key autoincrement,' + 'commonprefs text not null' + ')';
+            tx.executeSql(
+                sql,
+                [],
+                function(tx, rs){
+                    var sql = 'SELECT COUNT(*) FROM ' + ixedit.applicationName + ' WHERE id = ?';
+                    tx.executeSql(
+                        sql,
+                        [1],
+                        function(tx, rs){
+                            var numberOfRecords = rs.rows.item(0)['COUNT(*)'];
+                            if(numberOfRecords > 0){ // If there is commonPrefs data.
+                                nextFunction(db, tx); // Next function.
+                            } else { // If there is no commonPrefs data, insert a record.
+                                var commonPrefsData = JSON.stringify(ixedit.commonPrefs);
+                                var escapedJsonString = escape(commonPrefsData);
+                                var sql = 'INSERT INTO ' + ixedit.applicationName + ' (commonprefs) VALUES (?)';
+                                tx.executeSql(
+                                    sql,
+                                    [escapedJsonString],
+                                    function(tx, rs){ // Load commonPrefs data.
+                                        nextFunction(db, tx); // Next function.
+                                    }
+                                )
+                            };
+                        }
+                    )
+                }
+            )
+        },
+        function(error) { // Function as the second argument.
+                window.alert('IxEdit Error: checkCommonRecord: ' + error.message);
+        },
+        function(){ // Callback for the succeeded case.
+            if(callbackFunction){
+                callbackFunction();
+            };
+        }
+    )
+};
+
+// Local DB read db common data. This is called by checkCommonRecord when loaded.
+ixedit.localdbi.readDbCommonData = function(db, tx){
+    var sql = 'SELECT ' + 'commonprefs' +' FROM ' + ixedit.applicationName + ' where id = ?';
+    tx.executeSql(
+        sql,
+        [1],
+        function(tx, rs){
+            var commonPrefsString = rs.rows.item(0)['commonprefs'];
+            if(commonPrefsString){
+                commonPrefsString = unescape(commonPrefsString);
+            }else{
+                commonPrefsString = '';
+            };
+            ixedit.loadCommonPrefsJsonString(commonPrefsString);
+            ixedit.dbi.checkPageRecord(db, ixedit.dbi.readDbIxData);
+        }
+    )
+};
+
+// Loca DB check page record.
+ixedit.localdbi.checkPageRecord = function(db, nextFunction, callbackFunction, nextFunctionArg){
+    db.transaction(
+        function(tx) {
+            var sql = 'CREATE TABLE IF NOT EXISTS ' + ixedit.projectName + ' (' + 'id integer primary key autoincrement,' + 'screenid text not null,' + 'ixdata text not null,' + 'prefs text' + ')';
+            tx.executeSql(
+                sql,
+                [],
+                function(tx, rs){
+                    var sql = 'SELECT COUNT(*) FROM ' + ixedit.projectName + ' WHERE screenid = ?';
+                    tx.executeSql(
+                        sql,
+                        [ixedit.screenID],
+                        function(tx, rs){
+                            var numberOfRecords = rs.rows.item(0)['COUNT(*)'];
+                            if(numberOfRecords > 0){ // If there is data.
+                                nextFunction(db, tx, nextFunctionArg); // Next function.
+                            } else { // If there is no data, insert a record.
+                                var ixData = '{"format":"' + ixedit.format + '", "data":""}';
+                                var escapedJsonString = escape(ixData);
+                                var sql = 'INSERT INTO ' + ixedit.projectName + ' (screenid,ixdata,prefs) VALUES (?,?,?)';
+                                tx.executeSql(
+                                    sql,
+                                    [ixedit.screenID, escapedJsonString, ''],
+                                    function(tx, rs){ // Load data.
+                                        // Show IxEdit Dialog.
+                                        nextFunction(db, tx, nextFunctionArg); // Next function.
+                                    }
+                                )
+                            };
+                        }
+                    )
+                }
+            )
+        },
+        function(error) { // Function as the second argument.
+            window.alert('IxEdit Error: Loading data failed. \ncheckPageRecord: ' + error.message);
+        },
+        function(){ // Callback for the succeeded case.
+            if(callbackFunction){
+                callbackFunction();
+            };
+        }
+    )
+};
+
+// Local DB sql update ix.
+ixedit.localdbi.sqlUpdateIx = function(db, tx){
+    var jsonString = ixedit.encodeIxsJSON(ixedit.ixs); // ixs to JSON.
+    var escapedJsonString = escape(jsonString); // Escape.
+    var prefsString = JSON.stringify(ixedit.prefs); // prefs to JSON.
+    var escapedPrefsString = escape(prefsString); // Escape.
+    var ixSql = 'UPDATE ' + ixedit.projectName + ' SET ixdata = ?, prefs = ? where screenid = ?'; // Data from one screen.
+
+    tx.executeSql(
+        ixSql,
+        [escapedJsonString, escapedPrefsString, ixedit.screenID],
+        function(tx, rs){
+            ixedit.modified = false; // modified flag down.
+        }
+    )
+};
+
+// Local DB sql update ix prefs.
+ixedit.localdbi.sqlUpdateIxPrefs = function(db, tx){
+    var prefsString = JSON.stringify(ixedit.prefs); // prefs to JSON.
+    var escapedPrefsString = escape(prefsString); // Escape.
+    var ixSql = 'UPDATE ' + ixedit.projectName + ' SET prefs = ? where screenid = ?'; // Data from one screen.
+    tx.executeSql(
+        ixSql,
+        [escapedPrefsString, ixedit.screenID],
+        function(tx, rs){
+        }
+    )
+};
+
+ixedit.localdbi.sqlUpdateCommonPrefs = function(db, tx){
+    var commonPrefsString = JSON.stringify(ixedit.commonPrefs); // prefs to JSON.
+    var escapedCommonPrefsString = escape(commonPrefsString); // Escape.
+    var commonSql = 'UPDATE ' + ixedit.applicationName + ' SET commonprefs = ? where id = ?'; // commonPrefs.
+    tx.executeSql(
+        commonSql,
+        [escapedCommonPrefsString, 1],
+        function(tx, rs){
+        }
+    )
+};
 // Initialize.
 ixedit.initialize = function(){
   this.preBufferOriginal();
