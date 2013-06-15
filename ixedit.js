@@ -5480,21 +5480,23 @@ ixedit.generateDialogMain = function(){
 
 // DB General Interfaces
 ixedit.updateFullData = function(){
-    var dbi = ixedit.dbi;
-    var db = dbi.dbInit(this.dbName);
-    dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs);
-    dbi.checkPageRecord(db, dbi.sqlUpdateIx);
+  var dbi = ixedit.dbi;
+  var db = dbi.dbInit(this.dbName);
+  // dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs);
+  // dbi.checkPageRecord(db, dbi.sqlUpdateIx);
+  dbi.saveIxData();
 };
 
 ixedit.updatePrefsDataAndReload = function(){
+  var dbi = ixedit.dbi;
+  var db = dbi.dbInit(this.dbName);
+  dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
     var dbi = ixedit.dbi;
-    var db = dbi.dbInit(this.dbName);
-    dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
-        var dbi = ixedit.dbi;
-        dbi.checkPageRecord(db, dbi.sqlUpdateIxPrefs, function(){
-            window.location.reload();
-        });
-    });
+    dbi.checkPageRecord(db, dbi.sqlUpdateIxPrefs, function(){
+      dbi.saveIxData();
+      window.location.reload();
+    })
+  })
 };
 
 // Save DB fully, then reload. ( This is for Done and Reload button. )
@@ -5504,8 +5506,9 @@ ixedit.updateIxDataAndReload = function(){
   dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
     var dbi = ixedit.dbi;
     dbi.checkPageRecord(db, dbi.sqlUpdateIx, function(){
+      dbi.saveIxData();
       window.location.reload();
-    });
+    })
   });
 };
 
@@ -5520,7 +5523,6 @@ ixedit.prepareEditor = function(){
     };
     this.screenID = locationString;
   };
-
 
   window.onbeforeunload = function () {
     if(ixedit.modified) { // If modified flag is up.
@@ -5700,6 +5702,17 @@ ixedit.localdbi.sqlUpdateCommonPrefs = function(db, tx){
         }
     )
 };
+
+// Save jsonString to localstorage. TMP
+ixedit.localdbi.saveIxData = function(){
+  var jsonString = ixedit.encodeIxsJSON(ixedit.ixs); // ixs to JSON.
+  try {
+    localStorage.setItem('ixedit-cache', jsonString);
+  } catch(a) {
+    return false;
+  }
+};
+
 // Initialize.
 ixedit.initialize = function(){
   this.preBufferOriginal();
@@ -5730,6 +5743,9 @@ jQuery(function(){
     ixedit.makeDialogBase()
     ixedit.generateDialogMain();
   };
+  if (localStorage.getItem('ixedit-cache') != null){
+    ixedit.importData(localStorage.getItem('ixedit-cache'));
+  }
 });
 
 
