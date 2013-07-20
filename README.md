@@ -24,7 +24,7 @@ Enter ixedit project folder:
 #### Online
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/perchouli/ixedit/master/ixedit.js"></script>
+    <script type="text/javascript" src="http://rawgithub.com/perchouli/ixedit/master/ixedit.js"></script>
     <link href="http://perchouli.github.com/ixedit/stylesheets/ixedit.css" rel="stylesheet">
 
 ### Basic operation flow
