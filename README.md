@@ -27,14 +27,7 @@ Enter ixedit project folder:
     <script type="text/javascript" src="http://rawgithub.com/perchouli/ixedit/master/ixedit.js"></script>
     <link href="http://perchouli.github.com/ixedit/stylesheets/ixedit.css" rel="stylesheet">
 
-### Basic operation flow
-
-1. Click “New” button in the list view to open the edit view to make a new interaction.
-2. In the action edit area, specify an event and target element(s) as the trigger of interaction.
-3. In the reaction edit area, specify a command and its parameters. You can make multiple reactions for one action.
-4. Click “Done” button to save the interaction you created. IxEdit Dialog switches back to the list view.
-
-### Example
+### Usage
 
 - Open the `index.html` file inside of a web browser.
 - if you installed python, run 
@@ -42,3 +35,24 @@ Enter ixedit project folder:
 > python server.py
 
 And access `http://127.0.0.1:8000`.
+
+- Or use grunt
+
+```
+$ npm install -g grunt-cli
+```
+
+Install all dependencies in repo's root and run:
+
+```
+$ npm install
+$ grunt server
+```
+
+
+### Basic operation flow
+
+1. Click “New” button in the list view to open the edit view to make a new interaction.
+2. In the action edit area, specify an event and target element(s) as the trigger of interaction.
+3. In the reaction edit area, specify a command and its parameters. You can make multiple reactions for one action.
+4. Click “Done” button to save the interaction you created. IxEdit Dialog switches back to the list view.
