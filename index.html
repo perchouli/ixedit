@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ixedit by perchouli</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Ixedit</h1>
+        <p>IxEdit is a JavaScript-based interaction design tool for the web. This project not need Google gears.</p>
+
+        <p class="view"><a href="https://github.com/perchouli/ixedit">View the Project on GitHub <small>perchouli/ixedit</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/perchouli/ixedit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/perchouli/ixedit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/perchouli/ixedit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="ixedit" class="anchor" href="#ixedit"><span class="octicon octicon-link"></span></a>ixedit</h1>
+
+<p>IxEdit is a JavaScript-based interaction design tool for the web. </p>
+
+<h3>
+<a name="the-project-is-compatible-with-those-browsers" class="anchor" href="#the-project-is-compatible-with-those-browsers"><span class="octicon octicon-link"></span></a>The project is compatible with those browsers.</h3>
+
+<ul>
+<li>Firefox 12.0+</li>
+<li>IE8+</li>
+<li>Chrome 19.0.1084.46+</li>
+<li>Safari 6.0.3+</li>
+</ul><h3>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h3>
+
+<h4>
+<a name="offline" class="anchor" href="#offline"><span class="octicon octicon-link"></span></a>Offline</h4>
+
+<p>Enter ixedit project folder:</p>
+
+<pre><code>&lt;script type="text/javascript" src="jquery/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="ixedit.js"&gt;&lt;/script&gt;
+&lt;link type="text/css" rel="stylesheet" charset="utf-8" href="ixedit.css"&gt;
+</code></pre>
+
+<h4>
+<a name="online" class="anchor" href="#online"><span class="octicon octicon-link"></span></a>Online</h4>
+
+<pre><code>&lt;script type="text/javascript" src="http://code.jquery.com/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://rawgithub.com/perchouli/ixedit/master/ixedit.js"&gt;&lt;/script&gt;
+&lt;link href="http://perchouli.github.com/ixedit/stylesheets/ixedit.css" rel="stylesheet"&gt;
+</code></pre>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<ul>
+<li>Open the <code>index.html</code> file inside of a web browser.</li>
+<li>if you installed python, run </li>
+</ul><blockquote>
+<p>python server.py</p>
+</blockquote>
+
+<p>And access <code>http://127.0.0.1:8000</code>.</p>
+
+<ul>
+<li>Or use grunt</li>
+</ul><pre><code>$ npm install -g grunt-cli
+</code></pre>
+
+<p>Install all dependencies in repo's root and run:</p>
+
+<pre><code>$ npm install
+$ grunt server
+</code></pre>
+
+<h3>
+<a name="basic-operation-flow" class="anchor" href="#basic-operation-flow"><span class="octicon octicon-link"></span></a>Basic operation flow</h3>
+
+<ol>
+<li>Click “New” button in the list view to open the edit view to make a new interaction.</li>
+<li>In the action edit area, specify an event and target element(s) as the trigger of interaction.</li>
+<li>In the reaction edit area, specify a command and its parameters. You can make multiple reactions for one action.</li>
+<li>Click “Done” button to save the interaction you created. IxEdit Dialog switches back to the list view.</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/perchouli">perchouli</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
