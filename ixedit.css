@@ -1172,3 +1172,7 @@ button.ixedit-xraycancel-pushed {
 	background-color: none !important;
 	z-index: -1 !important;
 }
+
+.ixedit-dialog-deploy {
+	z-index: 1;
+}

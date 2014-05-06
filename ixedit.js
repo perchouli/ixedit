@@ -1,7 +1,7 @@
 /* ==================== IXEDIT ==================== */
 
 /*!
- * IxEdit v1.02Alpha
+ * IxEdit v0.0.1
  * https://github.com/perchouli/ixedit
  *
  * Created by Sociomedia Inc.
@@ -10,15 +10,15 @@
  * 
  * IxEdit depends on and has links to jQuery and jQuery UI JavaScript Libraries.
  * 
- * Date: 2012-05-24
+ * Date: 2014-05-06
  */
 
 
 // ixedit object.
 var ixedit = {
   appName: 'IxEdit',
-  version: '1.02Alpha',
-  term: '2012',
+  version: '0.0.1',
+  term: '2014',
   hasLocalDb: false,
   detectBrowserLang: function(){
     try {
@@ -3543,7 +3543,7 @@ ixedit.showDeploy = function(){
           // Button effects
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
-          jQuery(buttons[0]).text(label.mainButtonClose);
+          jQuery(buttons[1]).text(label.mainButtonClose);
           jQuery('.ui-widget-overlay').addClass('ixedit-overlay'); // Add class to overlay.
 
           var textArea = jQuery('textarea.ixedit-deployingtext', deployDialog);
@@ -5170,7 +5170,7 @@ ixedit.makeDialogBase = function(){
   jQuery('<div id="ixedit-ui" title="IxEdit"><div id="ixedit-inputbox"><div id="ixedit-basic"><table id="ixedit-basictitle"><tr><td class="unchian-disclosurearea-basic"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-basic">' + label.inputHeaderUseracton + '</td><td class="ixedit-titlestatusarea-basic">&nbsp;</td></tr></table><div id="ixedit-basicitems"></div></div><div id="ixedit-action"><table id="ixedit-actiontitle"><tr><td class="unchian-disclosurearea-action"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-action">' + label.inputHeaderSystemfeedback + '</td><td class="ixedit-titlestatusarea-action">&nbsp;</td></tr></table><div id="ixedit-actionitems"></div></div><div id="ixedit-condition"><table id="ixedit-conditiontitle"><tr><td class="unchian-disclosurearea-condition"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-condition">' + label.inputHeaderCondition + '</td><td class="ixedit-titlestatusarea-condition">&nbsp;</td></tr></table><div id="ixedit-conditionitems"></div></div><div id="ixedit-cmnt"><table id="ixedit-commenttitle"><tr><td class="unchian-disclosurearea-comment"><button class="disclosure_triangle">&nbsp;</button></td><td class="ixedit-titlearea-comment">' + label.inputHeaderComment + '</td><td class="ixedit-titlestatusarea-comment">&nbsp;</td></tr></table><div id="ixedit-commentitems"></div></div></div></div>').prependTo(jQuery('body'));
   // Insert ix list to the top of ixedit-ui.
   jQuery('<div id="ixlist" style="display: none"><div id="ixedit-listheader"><table class="ixedit-table ixedit-table-header"></table></div><div id="ixedit-listbody"><table class="ixedit-table ixedit-table-body"></table></div></div>').prependTo(jQuery('#ixedit-ui'));
-  jQuery('<div id="ixedit-utility"><button id="ixedit-routebtn" title="' + label.tipRouteBtn + '">&nbsp;</button><div id="ixedit-routemenu"><ul><li id="ixedit-showAbout">' + label.utilityAbout + '</li><li id="ixedit-showImport">' + label.utilityImport + '</li><li id="ixedit-showExport">' + label.utilityExport + '</li><li id="ixedit-showDeploy">' + label.utilityDeploy + '</li><li id="ixedit-showJson" style="display: none;">' + label.utilityShowJson + '</li><li id="ixedit-showDb">' + label.utilityShowDb + '</li><li id="ixedit-discardDb">' + label.utilityDiscardDb + '</li></ul></div><p><span id="ixedit-utilitynoofitems">0</span> , <span id="ixedit-utilitynoofselected">0</span></p></div>').prependTo(jQuery('#ixedit-ui'));
+  jQuery('<div id="ixedit-utility"><button id="ixedit-routebtn" title="' + label.tipRouteBtn + '">&nbsp;</button><div id="ixedit-routemenu"><ul><li id="ixedit-showAbout">' + label.utilityAbout + '</li><li id="ixedit-showImport">' + label.utilityImport + '</li><li id="ixedit-showExport">' + label.utilityExport + '</li><li id="ixedit-showDeploy">' + label.utilityDeploy + '</li><li id="ixedit-showJson" style="display: none;">' + label.utilityShowJson + '</li></ul></div><p><span id="ixedit-utilitynoofitems">0</span> , <span id="ixedit-utilitynoofselected">0</span></p></div>').prependTo(jQuery('#ixedit-ui'));
   jQuery('<div id="ixedit-wrapper"></div>').appendTo(jQuery('body'));
 };
 
