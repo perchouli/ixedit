@@ -3500,7 +3500,7 @@ ixedit.showAbout = function(){
       open:
         function(){
           var aboutDialog = jQuery('.ixedit-dialog-about');
-          var buttons = jQuery('button', aboutDialog);
+          var buttons = jQuery('button:visible', aboutDialog);
           // Button effects.
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
@@ -3539,11 +3539,11 @@ ixedit.showDeploy = function(){
         function(){
           ixedit.refreshDeployDialog();
           var deployDialog = jQuery('.ixedit-dialog-deploy');
-          var buttons = jQuery('button', deployDialog);
+          var buttons = jQuery('button:visible', deployDialog);
           // Button effects
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
-          jQuery(buttons[1]).text(label.mainButtonClose);
+          jQuery(buttons[0]).text(label.mainButtonClose);
           jQuery('.ui-widget-overlay').addClass('ixedit-overlay'); // Add class to overlay.
 
           var textArea = jQuery('textarea.ixedit-deployingtext', deployDialog);
@@ -3588,7 +3588,7 @@ ixedit.showExport = function(){
         function(){
           ixedit.refreshExportDialog();
           var exportDialog = jQuery('.ixedit-dialog-export');
-          var buttons = jQuery('button', exportDialog);
+          var buttons = jQuery('button:visible', exportDialog);
           // Button effects
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
@@ -3667,7 +3667,7 @@ ixedit.showImport = function(){
       open:
         function(){
           var importDialog = jQuery('.ixedit-dialog-import');
-          var buttons = jQuery('button', importDialog);
+          var buttons = jQuery('button:visible', importDialog);
           // Button effects.
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
@@ -3701,6 +3701,7 @@ ixedit.showImport = function(){
 
 // Resize textarea of listbox on dialog while resizing
 ixedit.resizeBoxHeightOnDialog = function(dialog, box, bottomOffset){
+  console.log(box.position());
   var boxPosition = box.position();
   box.css('height', dialog.height() - boxPosition.top - bottomOffset);
 };

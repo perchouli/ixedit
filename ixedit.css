@@ -1173,6 +1173,9 @@ button.ixedit-xraycancel-pushed {
 	z-index: -1 !important;
 }
 
-.ixedit-dialog-deploy {
+.ixedit-dialog-deploy, .ixedit-dialog-export, .ixedit-dialog-import, .ixedit-dialog-about {
 	z-index: 1;
+}
+.ui-dialog {
+	position:absolute;
 }
