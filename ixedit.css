@@ -10,6 +10,7 @@
   color: #fff !important;
   font-size: 12px !important;
   font-family: 'Lucida Grande', Arial, sans-serif, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro' !important;
+  border: none;
 }
 
 .ui-widget-overlay {
