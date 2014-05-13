@@ -63,14 +63,7 @@ var ixedit = {
           var jQueryUIVersion =  jQuery.ui.version;
           var jQueryUIVersionArray = jQueryUIVersion.split('.');
           // Check jQuery UI version
-          if(window.localStorage){
-            // OK to GO!
-            ixedit.hasLocalDb = true;
-            return true;
-          } else {
-            window.alert(ixedit.babyLabel.needLocalStorage);
-            return false;
-          };
+          return true;
         } else {
           window.alert(ixedit.babyLabel.needJQueryUI);
           return false;
@@ -3485,7 +3478,7 @@ ixedit.areaGimmick = function(areaNum, ixeditUi, theWrapper, theContainer){
 // About Dialog
 ixedit.showAbout = function(){
   var label = ixedit.label;
-  var aboutDialog = jQuery('<div id="ixedit-about-ui" title="' + label.utilityAbout + '"><div class="ixedit-instruction-content">' + '<p id="ixedit-icon">&nbsp;</p><h2>' + label.appName + '</h2><p>' + label.version + ': ' + ixedit.version + '<br />' + label.copyright + '</p></div>');
+  var aboutDialog = jQuery('<div id="ixedit-about-ui" title="' + label.utilityAbout + '"><div class="ixedit-instruction-content">' + '<h2>' + label.appName + '</h2><p>' + label.version + ': ' + ixedit.version + '<br />' + label.copyright + '</p></div>');
     aboutDialog.dialog({
       width: 400,
       modal: true,
