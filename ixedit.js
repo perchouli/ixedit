@@ -768,7 +768,6 @@ ixedit.embedSources = [];
 ixedit.localdbi = new Object();
 ixedit.dbi = ixedit.localdbi;
 
-
 // Common preferences defaults
 ixedit.commonPrefs = new Object();
 ixedit.commonPrefs.inspectorWidth = 530;
@@ -3614,13 +3613,6 @@ ixedit.switchImportPanel = function(control, panel0, panel1){
       var textArea = jQuery('.ixedit-importingtext', importDialog);
       ixedit.resizeBoxHeightOnDialog(importDialog, textArea, 45);
       break;
-    case '1':
-      ixedit.showDBToImport(jQuery('.ixedit-listbox'), panel1);
-      panel0.hide();
-      panel1.show();
-      var listBox = jQuery('select.ixedit-listbox', importDialog);
-      ixedit.resizeBoxHeightOnDialog(importDialog, listBox, 45);
-      break;
     default:
       panel0.show();
       panel1.hide();
@@ -3631,7 +3623,7 @@ ixedit.switchImportPanel = function(control, panel0, panel1){
 // Import dialog.
 ixedit.showImport = function(){
   var label = ixedit.label;
-  var importDialog = jQuery('<div id="ixedit-import-ui" title="' + label.utilityImport + '"><div class="ixedit-instruction-chooser"><p>' + label.importSelectorLabel + '<select class="ixedit-importingtype-selector" onchange="ixedit.switchImportPanel(jQuery(this), jQuery(\'#ixedit-import-paste\'), jQuery(\'#ixedit-import-db\'));"><option value="0">' + label.importSelectorOptionLabel0 + '</option><option value="1">' + label.importSelectorOptionLabel1 + '</option></select></p></div><div id="ixedit-import-paste" class="ixedit-instruction-content">' + label.instructionImport + '<textarea class="ixedit-importingtext"></textarea></div>' + '<div id="ixedit-import-db"class="ixedit-instruction-content">' + label.instructionImportFromDB + '<select size="2" class="ixedit-listbox"></select></div>' + '</div>');
+  var importDialog = jQuery('<div id="ixedit-import-ui" title="' + label.utilityImport + '"><div id="ixedit-import-paste" class="ixedit-instruction-content">' + label.instructionImport + '<textarea class="ixedit-importingtext"></textarea></div></div>');
       importDialog.dialog({
       width: 600,
       height: 480,
@@ -3694,7 +3686,6 @@ ixedit.showImport = function(){
 
 // Resize textarea of listbox on dialog while resizing
 ixedit.resizeBoxHeightOnDialog = function(dialog, box, bottomOffset){
-  console.log(box.position());
   var boxPosition = box.position();
   box.css('height', dialog.height() - boxPosition.top - bottomOffset);
 };
@@ -3706,40 +3697,6 @@ ixedit.showJSON = function(){
   window.alert(this.encodeIxsJSON(this.ixs));
 };
 
-// DB dialog
-ixedit.showDB = function(){
-  var label = ixedit.label;
-  var showDBDialog = jQuery('<div id="ixedit-showdbdialog" title="' + label.utilityShowDb + '"></div>');
-    showDBDialog.dialog({
-      width: 600,
-      height: 440,
-      modal: true,
-      resizable: true,
-      dialogClass: 'ixedit-dialog ixedit-dialog-db',
-      buttons: {
-        "0": function() {
-          jQuery(this).dialog("destroy");
-          showDBDialog.remove();
-        }
-      },
-      open:
-        function(){
-          ixedit.showDBData(jQuery(this));
-          var dbDialog = jQuery('.ixedit-dialog-db');
-          var buttons = jQuery('button', dbDialog);
-          // Button effects.
-          buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
-          // Label buttons.
-          jQuery(buttons[0]).text(label.mainButtonClose);
-          jQuery('.ui-widget-overlay').addClass('ixedit-overlay'); // Add class to overlay.
-        },
-      close:
-        function(){
-          showDBDialog.dialog('destroy');
-          showDBDialog.remove();
-        }
-    });
-};
 
 
 
@@ -3765,7 +3722,7 @@ ixedit.showCommadHelp = function(commandName){
         function(){
           var commandhelpDialog = jQuery('.ixedit-dialog-commandhelp');
           jQuery('.ixedit-instruction-content', commandhelpDialog).html(ixedit.cmds[commandName].help);
-          var buttons = jQuery('button', commandhelpDialog);
+          var buttons = jQuery('button:visible', commandhelpDialog);
           // Button effects.
           buttons.mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')});
           // Label buttons.
@@ -5374,12 +5331,6 @@ ixedit.generateDialogMain = function(){
         var commentTItle = jQuery('#ixedit-commenttitle');
         commentTItle.mousedown(function(){jQuery('tr', commentTItle).addClass('ixedit-pushed')}).mouseup(function(){jQuery('tr', commentTItle).removeClass('ixedit-pushed')}).mouseout(function(){jQuery('tr', commentTItle).removeClass('ixedit-pushed')});
 
-        // Utility area.
-        if(!ixedit.advancedMode){ // If its not advanced mode.
-          jQuery('#ixedit-showDb').hide();
-          jQuery('#ixedit-discardDb').hide();
-        };
-
         // Routing menu binding.
         var routeMenu = jQuery('#ixedit-routemenu');
         jQuery('#ixedit-routebtn').mousedown(function(){jQuery(this).addClass('ixedit-pushed')}).mouseup(function(){jQuery(this).removeClass('ixedit-pushed')}).mouseout(function(){jQuery(this).removeClass('ixedit-pushed')}).click(function(){routeMenu.toggle(); return false; });
@@ -5391,11 +5342,6 @@ ixedit.generateDialogMain = function(){
         jQuery('#ixedit-showDeploy').click(function(){ixedit.showDeploy();});
         jQuery('#ixedit-showJson').click(function(){ixedit.showJSON();});
         jQuery('#ixedit-showDb').click(function(){ixedit.showDB();});
-        jQuery('#ixedit-discardDb').click(function(){
-          if(window.confirm('IxEdit: Are you sure you want to discard the DB? All IxEdit data including things for other screens will be gone forever.')){
-            ixedit.deleteDB();
-          }
-        });
 
 
         // Initial opening or closing about each area.
@@ -5475,7 +5421,6 @@ ixedit.generateDialogMain = function(){
 // DB General Interfaces
 ixedit.updateFullData = function(){
   var dbi = ixedit.dbi;
-  var db = dbi.dbInit(this.dbName);
   // dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs);
   // dbi.checkPageRecord(db, dbi.sqlUpdateIx);
   dbi.saveIxData();
@@ -5483,27 +5428,15 @@ ixedit.updateFullData = function(){
 
 ixedit.updatePrefsDataAndReload = function(){
   var dbi = ixedit.dbi;
-  var db = dbi.dbInit(this.dbName);
-  dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
-    var dbi = ixedit.dbi;
-    dbi.checkPageRecord(db, dbi.sqlUpdateIxPrefs, function(){
-      dbi.saveIxData();
-      window.location.reload();
-    })
-  })
+  dbi.saveIxData();
+  window.location.reload();
 };
 
 // Save DB fully, then reload. ( This is for Done and Reload button. )
 ixedit.updateIxDataAndReload = function(){
   var dbi = ixedit.dbi;
-  var db = dbi.dbInit(ixedit.dbName);
-  dbi.checkCommonRecord(db, dbi.sqlUpdateCommonPrefs, function(){
-    var dbi = ixedit.dbi;
-    dbi.checkPageRecord(db, dbi.sqlUpdateIx, function(){
-      dbi.saveIxData();
-      window.location.reload();
-    })
-  });
+  dbi.saveIxData();
+  window.location.reload();
 };
 
 // Prepare IxEdit Dialog.
@@ -5534,16 +5467,17 @@ ixedit.addEmbedSource = function(source){
 
 // ********** Local Database Interfaces **********
 ixedit.localdbi.dbInit = function(dbName){
-    if(window.openDatabase){
-        if(ixedit.db){ // If ixedit.db is defined.
-            // Do nothing.
-        } else { // If not.
-            ixedit.db = openDatabase(dbName, '1.0', 'ixedit local database', 512000); // Define.
-        };
-        return ixedit.db;
-    } else {
-        window.alert('IxEdit Error: There is no local client-side database storage.');
-    };
+    // if(window.openDatabase){
+    //     if(ixedit.db){ // If ixedit.db is defined.
+    //         // Do nothing.
+    //     } else { // If not.
+    //         ixedit.db = openDatabase(dbName, '1.0', 'ixedit local database', 512000); // Define.
+    //     };
+    //     return ixedit.db;
+    // } else {
+    //     window.alert('IxEdit Error: There is no local client-side database storage.');
+    // };
+    return 
 };
 ixedit.localdbi.checkCommonRecord = function(db, nextFunction, callbackFunction){
 
