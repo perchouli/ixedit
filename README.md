@@ -17,7 +17,7 @@ Copy and paste the HTML code:
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
     <script type="text/javascript" src="http://rawgit.com/perchouli/ixedit/master/ixedit.js"></script>
-    <link href="http://perchouli.github.com/ixedit/stylesheets/ixedit.css" rel="stylesheet">
+    <link href="http://rawgit.com/perchouli/ixedit/master/ixedit.css" rel="stylesheet">
 
 ### Usage
 
